@@ -319,13 +319,25 @@ export const MacOSWindow: React.FC<MacOSWindowProps> = ({
               </div>
               <div className="w-6"></div>
             </div>
-            {/* Live Animated Screen Recording GIF */}
+            {/* Live Animated Screen Recording */}
             <div className="w-full aspect-[16/10] bg-zinc-950 overflow-hidden">
-              <img
-                src={getAssetUrl(item.windowContent.previewMedia.src)}
-                alt={item.windowContent.previewMedia.alt || item.title}
-                className="w-full h-full object-cover object-top"
-              />
+              {item.windowContent.previewMedia.src.endsWith('.mp4') ? (
+                <video
+                  src={getAssetUrl(item.windowContent.previewMedia.src)}
+                  poster={getAssetUrl(item.windowContent.previewMedia.src.replace('.mp4', '_poster.jpg'))}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover object-top"
+                />
+              ) : (
+                <img
+                  src={getAssetUrl(item.windowContent.previewMedia.src)}
+                  alt={item.windowContent.previewMedia.alt || item.title}
+                  className="w-full h-full object-cover object-top"
+                />
+              )}
             </div>
           </div>
         )}

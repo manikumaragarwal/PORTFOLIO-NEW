@@ -3,128 +3,158 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>28 Degree Salon • WhatsApp AI Concierge</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>28 Degree Salon - WhatsApp AI Automation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    code, .font-mono { font-family: 'JetBrains Mono', monospace; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #09090b; color: #f4f4f5; padding: 2rem; min-height: 100vh; }
+    code, .mono { font-family: 'JetBrains Mono', monospace; }
+    .container { max-width: 72rem; margin: 0 auto; }
+    .header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #27272a; padding-bottom: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+    .header-left { display: flex; align-items: center; gap: 0.75rem; }
+    .header-icon { width: 2.5rem; height: 2.5rem; border-radius: 0.75rem; background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .header h1 { font-size: 1rem; font-weight: 700; letter-spacing: -0.02em; }
+    .header p { font-size: 0.7rem; color: #a1a1aa; font-family: 'JetBrains Mono', monospace; }
+    .badge { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: #4ade80; }
+
+    .grid-main { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+    @media(min-width:768px) { .grid-main { grid-template-columns: 6fr 6fr; } }
+
+    /* WhatsApp Simulator */
+    .phone-container { background: #0b141a; border: 1px solid #27272a; border-radius: 1.25rem; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5); }
+    .phone-header { background: #202c33; padding: 0.75rem 1rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #2a3942; }
+    .phone-contact { display: flex; align-items: center; gap: 0.65rem; }
+    .avatar { width: 2rem; height: 2rem; border-radius: 50%; background: #22c55e; color: #000; font-weight: 700; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; }
+    .contact-info h3 { font-size: 0.8rem; font-weight: 600; color: #e9edef; }
+    .contact-info p { font-size: 0.65rem; color: #8696a0; }
+    .phone-badges { font-size: 0.65rem; font-family: 'JetBrains Mono', monospace; color: #22c55e; }
+
+    .chat-body { padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; min-height: 320px; background-color: #0b141a; background-image: radial-gradient(#182229 1px, transparent 1px); background-size: 16px 16px; }
+    .msg { max-width: 82%; padding: 0.6rem 0.85rem; border-radius: 0.5rem; font-size: 0.75rem; line-height: 1.45; position: relative; }
+    .msg-user { align-self: flex-end; background: #005c4b; color: #e9edef; border-top-right-radius: 0; }
+    .msg-bot { align-self: flex-start; background: #202c33; color: #d1d7db; border-top-left-radius: 0; }
+    .msg-time { font-size: 0.58rem; color: rgba(233,237,239,0.5); font-family: 'JetBrains Mono', monospace; text-align: right; margin-top: 0.25rem; }
+
+    .menu-card { margin-top: 0.4rem; padding: 0.5rem; border-radius: 0.35rem; background: rgba(11,20,26,0.6); border: 1px solid #2a3942; }
+    .menu-item { display: flex; justify-content: space-between; font-size: 0.7rem; color: #aebac1; padding: 0.2rem 0; }
+    .menu-item strong { color: #4ade80; }
+
+    /* Right State Machine Panel */
+    .panel { background: rgba(24,24,27,0.9); border: 1px solid #27272a; border-radius: 1.25rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; }
+    .panel-title { font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: #a1a1aa; font-weight: 600; margin-bottom: 1rem; }
+    
+    .state-steps { display: flex; flex-direction: column; gap: 0.75rem; }
+    .state-box { padding: 0.85rem; border-radius: 0.75rem; background: rgba(9,9,11,0.7); border: 1px solid #27272a; }
+    .state-box.active { border-color: rgba(34,197,94,0.4); background: rgba(34,197,94,0.06); }
+    .state-head { display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.25rem; }
+    .state-tag { color: #4ade80; font-weight: 600; }
+    .state-lat { color: #71717a; font-size: 0.65rem; }
+    .state-desc { font-size: 0.7rem; color: #d4d4d8; line-height: 1.5; }
+
+    .metrics-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid #27272a; }
+    .m-box { background: rgba(9,9,11,0.6); padding: 0.75rem; border-radius: 0.75rem; border: 1px solid #27272a; text-align: center; }
+    .m-val { font-size: 1.15rem; font-weight: 700; color: #4ade80; font-family: 'JetBrains Mono', monospace; }
+    .m-label { font-size: 0.6rem; color: #71717a; text-transform: uppercase; letter-spacing: 0.08em; font-family: 'JetBrains Mono', monospace; margin-top: 0.2rem; }
   </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 min-h-screen selection:bg-emerald-500 selection:text-white p-8 sm:p-12 space-y-12">
-
-  <!-- Header Nav -->
-  <header class="max-w-6xl mx-auto flex items-center justify-between border-b border-zinc-800/80 pb-6">
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-lg shadow-inner">
-        💬
-      </div>
-      <div>
-        <h1 class="text-base font-bold text-white tracking-tight leading-tight">28 Degree Salon Chain (Delhi)</h1>
-        <p class="text-xs font-mono text-zinc-400">Autonomous WhatsApp Booking & Inquiry Concierge</p>
-      </div>
-    </div>
-    <div class="flex items-center gap-2">
-      <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
-        ● Live on WhatsApp API
-      </span>
-      <span class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs font-mono">
-        Built in 1 Night
-      </span>
-    </div>
-  </header>
-
-  <!-- Main Showcase Grid -->
-  <main class="max-w-6xl mx-auto space-y-10">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
-      
-      <!-- WhatsApp Conversation Flow Simulator -->
-      <div class="md:col-span-7 bg-zinc-900/90 border border-zinc-800 rounded-2xl p-6 shadow-2xl space-y-4">
-        <div class="flex items-center justify-between border-b border-zinc-800 pb-3 text-xs font-mono text-zinc-400">
-          <div class="flex items-center gap-2">
-            <div class="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
-            <span>28 DEGREE BOT (+91 98XXX XXXXX)</span>
-          </div>
-          <span>RESPONSE LATENCY &lt; 1.4s</span>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-left">
+        <div class="header-icon">💬</div>
+        <div>
+          <h1>28 Degree Salon WhatsApp AI</h1>
+          <p>Autonomous Conversational Booking & Branch Dispatch</p>
         </div>
+      </div>
+      <span class="badge">● Live in Production</span>
+    </header>
 
-        <!-- Chat Bubbles -->
-        <div class="space-y-3 font-sans text-xs">
-          <!-- User Msg -->
-          <div class="flex justify-end">
-            <div class="bg-emerald-700/80 text-white p-3 rounded-2xl rounded-tr-xs max-w-xs shadow-md space-y-0.5">
-              <p>Hi! Can I book a haircut and beard trim for tomorrow at the South Delhi branch around 5 PM?</p>
-              <div class="text-[9px] text-emerald-200 text-right">04:12 PM ✔✔</div>
+    <div class="grid-main">
+      <!-- WhatsApp Simulation -->
+      <div class="phone-container">
+        <div class="phone-header">
+          <div class="phone-contact">
+            <div class="avatar">28°</div>
+            <div class="contact-info">
+              <h3>28 Degree Salon Concierge</h3>
+              <p>Official Business Account • Online</p>
             </div>
           </div>
+          <span class="phone-badges">API Connected</span>
+        </div>
 
-          <!-- Bot Msg -->
-          <div class="flex justify-start">
-            <div class="bg-zinc-800/90 text-zinc-100 p-3 rounded-2xl rounded-tl-xs max-w-sm border border-zinc-700/60 shadow-md space-y-1.5">
-              <p>✨ <strong>Welcome to 28 Degree Salon!</strong></p>
-              <p>We'd love to host you. We have a slot available at our <strong>South Extension branch tomorrow at 5:00 PM</strong> with Senior Stylist Rohit.</p>
-              <div class="p-2 rounded bg-zinc-950/70 border border-zinc-800 font-mono text-[11px] text-emerald-300">
-                • Haircut + Beard Sculpting: ₹1,200<br>
-                • Estimated Duration: 45 mins
+        <div class="chat-body">
+          <div class="msg msg-user">
+            Hi, do you have any haircut & beard styling slots open this evening at South Ex branch?
+            <div class="msg-time">6:42 PM</div>
+          </div>
+
+          <div class="msg msg-bot">
+            Hey there! 👋 Yes, we have 2 openings at our <strong>South Ex II</strong> branch today:
+            <div class="menu-card">
+              <div class="menu-item"><span>1. 7:15 PM with Rahul</span><strong>₹850</strong></div>
+              <div class="menu-item"><span>2. 8:00 PM with Vikram</span><strong>₹850</strong></div>
+            </div>
+            Reply with <strong>1</strong> or <strong>2</strong> to confirm your slot instantly!
+            <div class="msg-time">6:42 PM · &lt;1.2s</div>
+          </div>
+
+          <div class="msg msg-user">
+            Option 1 please! My name is Amit.
+            <div class="msg-time">6:43 PM</div>
+          </div>
+
+          <div class="msg msg-bot">
+            You're all set, Amit! 🎉<br>
+            📅 <strong>Today at 7:15 PM</strong><br>
+            📍 <strong>28 Degree Salon (South Ex II)</strong><br>
+            ✂️ Stylist: Rahul • Ref: #SD-9281<br><br>
+            See you soon!
+            <div class="msg-time">6:43 PM · &lt;0.9s</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- State Machine Logic Panel -->
+      <div class="panel">
+        <div>
+          <div class="panel-title">Conversational State Machine</div>
+          <div class="state-steps">
+            <div class="state-box active">
+              <div class="state-head">
+                <span class="state-tag">01 · Intent & Entity Classifier</span>
+                <span class="state-lat">Latency: 280ms</span>
               </div>
-              <p>Would you like me to confirm this booking?</p>
-              <div class="text-[9px] text-zinc-400 text-right">04:12 PM</div>
+              <p class="state-desc">Identifies target service (Hair + Beard), target branch (South Ex), and preferred time window (Evening).</p>
+            </div>
+
+            <div class="state-box active">
+              <div class="state-head">
+                <span class="state-tag">02 · Realtime Catalog & Slot Query</span>
+                <span class="state-lat">Latency: 140ms</span>
+              </div>
+              <p class="state-desc">Deterministic lookup against salon availability database to prevent overbooking or hallucinated pricing.</p>
+            </div>
+
+            <div class="state-box active">
+              <div class="state-head">
+                <span class="state-tag">03 · Booking Dispatch & Webhook</span>
+                <span class="state-lat">Latency: 190ms</span>
+              </div>
+              <p class="state-desc">Generates booking token, logs client record, and sends notification to branch manager's tablet.</p>
             </div>
           </div>
         </div>
 
-        <!-- Live Status Metrics -->
-        <div class="pt-4 grid grid-cols-3 gap-3 border-t border-zinc-800/80 text-center">
-          <div class="bg-zinc-950/60 p-3 rounded-xl border border-zinc-800/60">
-            <div class="text-lg font-bold text-white font-mono">24/7</div>
-            <div class="text-[10px] text-zinc-400 uppercase tracking-wider font-mono">Uptime Intake</div>
-          </div>
-          <div class="bg-zinc-950/60 p-3 rounded-xl border border-zinc-800/60">
-            <div class="text-lg font-bold text-emerald-400 font-mono">0%</div>
-            <div class="text-[10px] text-zinc-400 uppercase tracking-wider font-mono">Hallucination</div>
-          </div>
-          <div class="bg-zinc-950/60 p-3 rounded-xl border border-zinc-800/60">
-            <div class="text-lg font-bold text-sky-400 font-mono">&lt; 2s</div>
-            <div class="text-[10px] text-zinc-400 uppercase tracking-wider font-mono">Response Time</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Business Workflow Architecture Card -->
-      <div class="md:col-span-5 bg-gradient-to-b from-emerald-950/30 via-zinc-900 to-zinc-900 border border-emerald-500/30 rounded-2xl p-6 flex flex-col justify-between shadow-xl">
-        <div class="space-y-4">
-          <div class="flex items-center justify-between text-xs font-mono text-emerald-300">
-            <span>ARCHITECTURE SUMMARY</span>
-            <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">Production API</span>
-          </div>
-
-          <h3 class="text-xl font-bold text-white leading-snug">
-            Zero-Friction Client Intake & Calendar Sync
-          </h3>
-
-          <div class="space-y-2 text-xs text-zinc-300 font-sans">
-            <div class="p-2.5 rounded-lg bg-zinc-950/70 border border-zinc-800">
-              <span class="text-emerald-400 font-mono font-semibold">1. Webhook Routing:</span> Cloud API validates incoming message tokens under 100ms.
-            </div>
-            <div class="p-2.5 rounded-lg bg-zinc-950/70 border border-zinc-800">
-              <span class="text-emerald-400 font-mono font-semibold">2. Guardrailed Parsing:</span> Intent classifier maps services and branch catalogs without pricing errors.
-            </div>
-            <div class="p-2.5 rounded-lg bg-zinc-950/70 border border-zinc-800">
-              <span class="text-emerald-400 font-mono font-semibold">3. Calendar Lock:</span> Real-time slot locking synced directly to salon desk dashboard.
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-4 mt-4 border-t border-zinc-800/80 flex items-center justify-between text-xs font-mono text-zinc-400">
-          <span>Sprint: 1 Overnight Build</span>
-          <span class="text-emerald-400 font-bold">Shipped to Production</span>
+        <div class="metrics-row">
+          <div class="m-box"><div class="m-val">&lt;2s</div><div class="m-label">Avg Response</div></div>
+          <div class="m-box"><div class="m-val">24/7</div><div class="m-label">Inquiry Uptime</div></div>
+          <div class="m-box"><div class="m-val">1 Night</div><div class="m-label">Turnaround</div></div>
         </div>
       </div>
-
     </div>
-  </main>
-
+  </div>
 </body>
 </html>

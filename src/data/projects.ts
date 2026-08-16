@@ -5,94 +5,95 @@ export const PROJECTS: Project[] = [
     id: 'instagram-second-brain',
     slug: 'instagram-second-brain',
     title: 'Instagram → Second Brain',
-    tagline: 'Turning saved Reels into structured knowledge graphs inside Obsidian (ideas → hooks → formats → observations).',
+    tagline: 'I kept saving Reels and never looking at them again. So I built a pipeline that turns saved videos into searchable knowledge inside Obsidian.',
     clientOrContext: 'Knowledge Systems',
     year: '2026',
     statusBadge: {
       text: 'BUILDING',
       type: 'building'
     },
-    previewImage: '/images/reel_obsidian_pipeline.gif',
-    heroImage: '/images/reel_obsidian_pipeline.gif',
+    previewImage: '/images/reel_obsidian_pipeline.mp4',
+    heroImage: '/images/reel_obsidian_pipeline.mp4',
     githubUrl: 'https://github.com/manikumaragarwal/REEL-Knowledge-System',
-    tags: ['Content Intelligence', 'Obsidian', 'Knowledge Graph', 'Reverse-Engineering'],
-    role: 'System Architect & Content Researcher',
+    showcaseUrl: '/showcases/reel-second-brain.html',
+    tags: ['Content Intelligence', 'Obsidian', 'Knowledge Graph', 'Python'],
+    role: 'Solo Builder',
     timeline: 'Ongoing Personal Project',
     team: ['Manish Agarwal'],
     tools: ['Obsidian', 'Python', 'Whisper AI', 'Claude'],
-    tldr: 'I got tired of saving content I would never look at again. I save a lot of Reels, but saving something doesn\'t mean learning from it. I built a system that takes saved Instagram content and turns it into structured knowledge inside Obsidian: ideas → hooks → formats → observations → relationships.',
+    tldr: 'I save a lot of Reels. Probably too many. The problem is that saving something and actually learning from it are two completely different things. So I built a system that takes saved Instagram content, transcribes it, breaks it apart, and turns it into structured notes inside Obsidian. Now every video I analyze gets linked to patterns I have already collected.',
     background: {
       title: "The Graveyard of Saved Reels",
       content: [
-        "Like most people studying short-form content, I saved hundreds of Reels. The problem was that saving something doesn't mean you've actually learned from it or retained the underlying mechanics.",
-        "Bookmark folders are passive graveyards. I wanted an active intelligence system where every piece of saved content is atomized into actionable components and linked with everything else I've collected."
+        "Like most people studying short-form content, I saved hundreds of Reels. But saving something and actually understanding why it worked are completely different activities.",
+        "My bookmark folders were a graveyard. I wanted something where every saved video gets broken down into parts and connected to everything else I have already collected."
       ],
       callout: {
         stat: '500+ Reels',
-        label: 'ingested, transcribed, and structured into interconnected hook & retention nodes.'
+        label: 'transcribed, broken down, and linked into an Obsidian knowledge graph.'
       }
     },
     problem: {
-      title: "Passive Bookmarking vs. Active Content Intelligence",
+      title: "Saving Is Not the Same as Learning",
       content: [
-        "A 30-second Reel contains multiple layers: visual hook, verbal hook, pacing speed, sentence cadence, storytelling arc, and call-to-action.",
-        "When you only save a bookmark, you lose all the structural patterns that made the video work."
+        "A 30-second Reel has a lot going on: how it opens, how the creator speaks, pacing choices, the story structure, the call to action. You lose all of that when you just hit save.",
+        "I wanted to be able to search my saved content by hook type, by retention pattern, by storytelling approach. Bookmarks can not do that."
       ],
       painPoints: [
-        'Zero retention from passive Instagram bookmarks',
-        'Inability to search across saved videos by hook type or retention tactic',
-        'Disjointed understanding of why specific formats perform',
-        'Lack of cross-pollination between different creators and niches'
+        'Saved hundreds of videos but never revisited or learned from them',
+        'No way to search saved content by hook style or format',
+        'Couldn\'t see connections between what different creators were doing',
+        'No system for combining ideas across niches'
       ]
     },
     process: {
-      title: "Building the Ingestion & Breakdown Pipeline",
-      description: "A multi-stage pipeline that extracts audio, transcribes verbal scripts, tags visual hooks, and generates interconnected markdown notes in Obsidian.",
+      title: "How the Pipeline Works",
+      description: "Videos go in, structured Obsidian notes come out. Each note connects to patterns already in the vault.",
       steps: [
         {
-          phase: 'Step 1: Automated Ingestion & Transcription',
-          details: 'Saved video links are processed through Whisper AI to extract word-level transcripts and timestamped sentence cadences.'
+          phase: 'Step 1: Transcription',
+          details: 'Saved video links get processed through Whisper AI to pull out word-level transcripts with timestamps.'
         },
         {
-          phase: 'Step 2: Structural Decomposition',
-          details: 'The script is atomized into 5 distinct vectors: Hook Statement, Core Insight, Format Mechanics, Retention Tactic, and Creator Quirks.'
+          phase: 'Step 2: Breaking It Apart',
+          details: 'The transcript gets split into components: what the hook is, the core idea, what format tricks are used, and any creator-specific quirks.'
         },
         {
-          phase: 'Step 3: Graph Linking in Obsidian',
-          details: 'Every note automatically links to related hook patterns, emotional triggers, and recurring storytelling frameworks across my entire second brain.'
+          phase: 'Step 3: Linking in Obsidian',
+          details: 'Each note auto-links to related hooks, storytelling patterns, and ideas already sitting in the vault.'
         }
       ]
     },
     finalProduct: {
-      title: "The Content Intelligence Engine",
-      description: "A living Obsidian vault that grows more valuable every time I analyze a video.",
+      title: "A Second Brain That Gets Smarter Over Time",
+      description: "An Obsidian vault that becomes more useful every time I analyze a video.",
       highlights: [
         {
-          title: 'Hook Taxonomy Library',
-          description: 'Instant searchable database of 20+ hook structures categorized by psychological curiosity gaps.',
+          title: 'Searchable Hook Library',
+          description: '20+ hook structures I have catalogued, organized by what kind of curiosity they create.',
           badge: 'Pattern Library'
         },
         {
-          title: 'Bi-directional Story Links',
-          description: 'Links raw creator observations to larger communication philosophies and production blueprints.',
+          title: 'Connected Notes',
+          description: 'Every observation links to broader ideas about storytelling, communication, and content formats.',
           badge: 'Knowledge Graph'
         },
         {
-          title: 'Recombination Engine',
-          description: 'Enables cross-pollinating a hook formula from finance with a storytelling cadence from filmmaking.',
+          title: 'Cross-Niche Remixing',
+          description: 'I can take a hook formula from a finance creator and pair it with a pacing style from filmmaking.',
           badge: 'Idea Synthesis'
         }
       ]
     },
     impact: {
-      title: "Key Takeaways & Growth",
+      title: "What Changed",
       metrics: [
-        { value: '10x', label: 'Faster ideation & scripting speed' },
-        { value: '200+', label: 'Interlinked content pattern nodes' },
-        { value: '100%', label: 'Retention of analyzed content mechanics' }
+        { value: '10x', label: 'Faster when brainstorming new scripts' },
+        { value: '200+', label: 'Linked notes across the vault' },
+        { value: 'Every', label: 'video gets broken down and connected' }
       ],
       quote: {
-        text: "The goal isn't to build a bigger bookmark folder. It's to build a content intelligence system that gets more useful every single time I use it.",
+        text: "I didn't want a bigger bookmark folder. I wanted something that actually gets more useful every time I use it.",
         author: 'Manish Agarwal'
       }
     }
@@ -101,94 +102,95 @@ export const PROJECTS: Project[] = [
     id: 'creator-skill-files',
     slug: 'creator-skill-files',
     title: 'Creator Skill Files',
-    tagline: 'What if you could turn a creator\'s unique voice, sentence rhythm, and quirks into a system?',
-    clientOrContext: 'Voice DNA Architecture',
+    tagline: 'What if you could map out what makes a creator sound like themselves, and put that into a structured file?',
+    clientOrContext: 'Voice Pattern Research',
     year: '2026',
     statusBadge: {
       text: 'SHIPPED',
       type: 'shipped'
     },
-    previewImage: '/images/creator_skill_files.gif',
-    heroImage: '/images/creator_skill_files.gif',
+    previewImage: '/images/creator_skill_files.mp4',
+    heroImage: '/images/creator_skill_files.mp4',
     githubUrl: 'https://github.com/manikumaragarwal/OBSIDIAN-NOTES',
-    tags: ['AI Prompt Engineering', 'Voice DNA', 'Pattern Recognition', 'Creator Systems'],
-    role: 'System Designer & Content Analyst',
+    showcaseUrl: '/showcases/creator-skill-files.html',
+    tags: ['Prompt Engineering', 'Voice Patterns', 'Content Analysis', 'Creator Systems'],
+    role: 'Researcher & Builder',
     timeline: '2025 - Present',
     team: ['Manish Agarwal'],
-    tools: ['Claude', 'Python', 'Linguistic Rhythm Analysis', 'Prompt Architecture'],
-    tldr: 'I started experimenting with creating "skill files" for individual creators. Not "write like this person", but something much deeper: recurring hook structures, sentence length and rhythm, vocabulary, core beliefs, and mannerisms. The goal isn\'t to clone someone\'s content—it\'s to understand what makes their content feel like them.',
+    tools: ['Claude', 'Python', 'Obsidian', 'Manual Analysis'],
+    tldr: 'I started experimenting with creating "skill files" for individual creators. Not "write like this person" prompts, but something deeper: their recurring hook structures, how long their sentences tend to be, their vocabulary habits, their core beliefs. The goal is not to copy someone. It is to understand what makes their content feel like them.',
     background: {
-      title: "Beyond Superficial AI Persona Prompts",
+      title: "Why Most AI-Generated Content Sounds the Same",
       content: [
-        "Most AI-generated creator content feels sterile because prompts rely on shallow adjectives: 'sound energetic and casual.'",
-        "True creator identity lives in sub-surface linguistic habits: average sentence length, comma cadence, negative parallelisms, recurring vocabulary, and contrarian core beliefs."
+        "Most AI persona prompts are shallow. They say things like 'sound energetic and casual.' That tells AI almost nothing useful.",
+        "What actually makes a creator recognizable lives deeper: their average sentence length, how they use commas, what opinions they keep returning to, their word choices."
       ],
       callout: {
         stat: '10 Vectors',
-        label: 'mapped per creator: hooks, pacing, sentence length, vocabulary, core beliefs, stories, visual patterns, and quirks.'
+        label: 'mapped per creator: hooks, pacing, sentence length, vocabulary, beliefs, stories, visual style, and quirks.'
       }
     },
     problem: {
-      title: "The Homogenization of AI Content",
+      title: "Everyone Sounds Like the Same AI",
       content: [
-        "When AI is used generically, every creator starts sounding like the exact same generic internet personality.",
-        "We needed a structured methodology to preserve the authentic human soul while accelerating ideation and drafting."
+        "When AI is used with generic prompts, every creator ends up sounding identical. The same hooks, the same structure, the same tone.",
+        "I wanted a way to document what makes someone's voice theirs, so AI could actually help them write faster without flattening their personality."
       ],
       painPoints: [
-        'Generic ChatGPT tone wiping out creator uniqueness',
-        'Loss of idiosyncratic speaking cadence in AI drafts',
-        'Lack of documented founder beliefs and core philosophies',
-        'Inability for creative teams to scale production without diluting the founder\'s voice'
+        'Generic AI tone wiping out what makes creators unique',
+        'AI drafts losing the rhythm of how someone actually speaks',
+        'No documentation of a creator\'s beliefs or worldview',
+        'Teams can not scale content production without diluting the original voice'
       ]
     },
     process: {
-      title: "Extracting the Content DNA",
-      description: "Analyzing hours of unscripted podcasts, videos, emails, and tweets to isolate unique linguistic signatures.",
+      title: "How I Build a Skill File",
+      description: "I study hours of unscripted content, podcasts, tweets, and emails, then isolate the patterns that make someone recognizable.",
       steps: [
         {
-          phase: 'Phase 1: Deep Material Corpus Extraction',
-          details: 'Gathered raw conversational audio, podcasts, and tweets to capture unvarnished vocabulary and speech rhythms.'
+          phase: 'Phase 1: Gathering Raw Material',
+          details: 'Collected unscripted podcasts, voice notes, tweets, and emails to capture how someone actually talks when they are not performing.'
         },
         {
-          phase: 'Phase 2: Linguistic Cadence Mapping',
-          details: 'Measured sentence length distributions, rhetorical question frequencies, and transition phrases.'
+          phase: 'Phase 2: Mapping the Patterns',
+          details: 'Measured sentence lengths, counted rhetorical questions, tracked transition phrases, noted vocabulary preferences.'
         },
         {
-          phase: 'Phase 3: Skill File Synthesis',
-          details: 'Compiled structured, deterministic prompt files that encode belief hierarchies, contrarian angles, and banned clichés.'
+          phase: 'Phase 3: Building the Skill File',
+          details: 'Compiled everything into a structured markdown file: their core beliefs, banned cliches, sentence rhythm rules, and vocabulary fingerprint.'
         }
       ]
     },
     finalProduct: {
-      title: "The Creator Skill File Framework",
-      description: "A comprehensive markdown blueprint that guides AI tools to generate drafts indistinguishable from the creator's genuine thoughts.",
+      title: "The Skill File Framework",
+      description: "A structured markdown document that tells AI tools how to write in a specific creator's voice without sounding generic.",
       highlights: [
         {
-          title: 'Belief Hierarchy Engine',
-          description: 'Identifies the hills the creator would die on, ensuring every script reinforces their worldview.',
-          badge: 'Belief Matrix'
+          title: 'Belief Map',
+          description: 'Documents the opinions this creator keeps defending. Every draft reinforces their actual worldview.',
+          badge: 'Core Beliefs'
         },
         {
-          title: 'Sentence Rhythm & Cadence Matrix',
-          description: 'Enforces exact syllable rhythms and punctuation styles unique to the creator\'s speech pattern.',
-          badge: 'Linguistic Rhythm'
+          title: 'Sentence Rhythm Profile',
+          description: 'Captures how long their sentences are, how they punctuate, where they pause. The stuff that makes writing feel like a specific person.',
+          badge: 'Linguistic Pattern'
         },
         {
-          title: 'Anti-Trope Guardrails',
-          description: 'Explicitly bans cliché AI transitional phrases and buzzwords to prevent artificial polish.',
-          badge: 'Authenticity Filter'
+          title: 'Banned Phrases List',
+          description: 'A list of generic AI filler phrases and cliches that this creator would never use. Keeps the output honest.',
+          badge: 'Quality Filter'
         }
       ]
     },
     impact: {
-      title: "Results & Applications",
+      title: "What It Does",
       metrics: [
-        { value: '100%', label: 'Preservation of creator voice consistency' },
-        { value: '0%', label: 'Generic AI cliché phrases in output' },
-        { value: '5x', label: 'Drafting turnaround for long-term content strategies' }
+        { value: 'Voice', label: 'stays consistent across AI-assisted drafts' },
+        { value: 'Zero', label: 'generic filler phrases in the output' },
+        { value: '5x', label: 'faster drafting for long-term content plans' }
       ],
       quote: {
-        text: "The goal isn't to clone someone's content. It's to understand what makes their content feel undeniably like them.",
+        text: "I'm not trying to clone anyone. I'm trying to understand what makes their writing feel like them.",
         author: 'Manish Agarwal'
       }
     }
@@ -204,80 +206,81 @@ export const PROJECTS: Project[] = [
       text: 'EXPERIMENTAL',
       type: 'building'
     },
-    previewImage: '/images/ai_editing_pipeline.gif',
-    heroImage: '/images/ai_editing_pipeline.gif',
+    previewImage: '/images/ai_editing_pipeline.mp4',
+    heroImage: '/images/ai_editing_pipeline.mp4',
     githubUrl: 'https://github.com/manikumaragarwal/subtitle-generation-pipeline',
+    showcaseUrl: '/showcases/ai-editing-pipeline.html',
     tags: ['Claude Code', 'Remotion', 'React Video', 'Programmable Motion'],
-    role: 'Pipeline Developer & Editor',
+    role: 'Pipeline Builder',
     timeline: '2026',
     team: ['Manish Agarwal'],
     tools: ['Claude Code', 'Remotion', 'React', 'TypeScript', 'FFmpeg'],
-    tldr: 'I wanted editing to become programmable. I\'ve been experimenting with Claude Code + Remotion to turn parts of short-form editing into repeatable systems. Instead of manually rebuilding subtitle styles, motion treatments, or visual callouts every time, I can describe what I want and let the system handle the implementation.',
+    tldr: 'I wanted editing to become code. I have been experimenting with Claude Code and Remotion to turn parts of short-form editing into repeatable systems. Instead of manually rebuilding subtitle styles and motion treatments every time, I can describe what I want in the terminal and the system handles the rest.',
     background: {
-      title: "The Repetitive Toll of Short-Form Video Editing",
+      title: "The Repetitive Parts of Video Editing",
       content: [
-        "Short-form video editing is filled with high-friction, repetitive micro-tasks: animating word-by-word subtitles, positioning zoom emphasis, timing sound cues, and rendering aspect ratios.",
-        "I realized that editing doesn't have to be a manual timeline-scrubbing chore for every recurring visual pattern—it can be defined as code."
+        "Short-form editing has a lot of repetitive tasks: animating subtitles word by word, positioning zoom emphasis, timing sound cues, rendering different aspect ratios.",
+        "I realized that for recurring visual patterns, editing does not have to mean dragging things on a timeline. It can be defined as code."
       ],
       callout: {
         stat: '100% Code',
-        label: 'Video components rendered via React & Remotion driven by terminal instructions.'
+        label: 'Video components rendered through React and Remotion, driven by terminal commands.'
       }
     },
     problem: {
-      title: "Manual Timeline Dragging vs. Programmable Systems",
+      title: "Timelines vs. Code",
       content: [
-        "Traditional NLEs (Premiere, CapCut) force you to manually recreate kinetic text keyframes, split-screen captions, and motion accents for every single project.",
-        "What happens when AI stops being a tool that assists manual editing and becomes the underlying infrastructure your editing workflow runs on?"
+        "Traditional editors like Premiere and CapCut make you manually recreate kinetic text, split-screen captions, and motion accents for every single project.",
+        "I kept asking myself: what if AI stopped being a tool that assists editing and became the infrastructure the editing workflow runs on?"
       ],
       painPoints: [
-        'Hours wasted recreating identical subtitle and kinetic caption treatments',
-        'Inconsistent visual brand styling across multi-editor teams',
-        'High latency between script ideation and initial video mockup render'
+        'Hours spent recreating the same subtitle animations for every project',
+        'Inconsistent styling when multiple people edit',
+        'Slow turnaround between writing a script and seeing a rough video'
       ]
     },
     process: {
-      title: "Architecting the Remotion + Claude Code Pipeline",
-      description: "Connecting natural language instructions in the terminal to parametric Remotion video composition components.",
+      title: "Building the Pipeline",
+      description: "Terminal instructions go in, Remotion renders video components out.",
       steps: [
         {
-          phase: 'Step 1: Parametric Remotion Components',
-          details: 'Built reusable React components for Daniel Dalen style split-captions, dynamic kinetic emphasis, and audio visualizers.'
+          phase: 'Step 1: Reusable Remotion Components',
+          details: 'Built React components for split-captions, kinetic word emphasis, and audio visualizers that accept data as props.'
         },
         {
-          phase: 'Step 2: Claude Code CLI Automation',
-          details: 'Constructed custom CLI workflows where Claude Code parses transcript word timestamps and injects dynamic keyframe timings into code.'
+          phase: 'Step 2: Claude Code Automation',
+          details: 'Set up CLI workflows where Claude Code reads transcript timestamps and generates the right keyframe timings in code.'
         },
         {
           phase: 'Step 3: Headless Rendering',
-          details: 'Automated high-speed headless rendering via FFmpeg & Remotion bundle pipelines directly from terminal commands.'
+          details: 'Videos render directly from the terminal through FFmpeg and Remotion, no timeline UI involved.'
         }
       ]
     },
     finalProduct: {
-      title: "Programmable Video Infrastructure",
-      description: "A code-first video engine where motion design and subtitle treatments execute programmatically.",
+      title: "Code-First Video Editing",
+      description: "A system where subtitle styles and motion treatments are defined in code and rendered programmatically.",
       highlights: [
         {
-          title: 'Kinetic Subtitle Engine',
-          description: 'Automatically formats and highlights word-level sentence groupings with dynamic spring physics.',
+          title: 'Kinetic Subtitles',
+          description: 'Automatically formats word-level captions with spring animations. The kind of subtitles you would normally keyframe by hand.',
           badge: 'Programmable Motion'
         },
         {
-          title: 'Zero-Timeline Editing',
-          description: 'Generate complete formatted video mockups from raw audio transcripts in seconds.',
+          title: 'No Timeline Needed',
+          description: 'Go from a raw audio transcript to a formatted video mockup in seconds, entirely from the terminal.',
           badge: 'Headless Render'
         }
       ]
     },
     impact: {
-      title: "Production Speed & System Scaling",
+      title: "Speed Gains",
       metrics: [
-        { value: '75%', label: 'Reduction in repetitive subtitle animation time' },
-        { value: '100%', label: 'Pixel-perfect typography and margin alignment' }
+        { value: '75%', label: 'less time on repetitive subtitle work' },
+        { value: 'Exact', label: 'typography and spacing every time' }
       ],
       quote: {
-        text: "I'm interested in where this goes when AI stops being 'a tool that helps me edit' and becomes 'the infrastructure my editing workflow runs on.'",
+        text: "I'm curious where this goes when AI stops being a tool that helps me edit and becomes the system my editing runs on.",
         author: 'Manish Agarwal'
       }
     }
@@ -286,88 +289,89 @@ export const PROJECTS: Project[] = [
     id: 'whatsapp-ai-automation',
     slug: 'whatsapp-ai-automation',
     title: 'WhatsApp AI Automation',
-    tagline: 'Built an AI automation system for a Delhi salon chain overnight under tight deadlines.',
+    tagline: 'Built an AI booking system for a Delhi salon chain in one night.',
     clientOrContext: '28 Degree (Delhi)',
     year: '2026',
     statusBadge: {
       text: 'SHIPPED',
       type: 'shipped'
     },
-    previewImage: '/images/salon_preview.gif',
-    heroImage: '/images/salon_preview.gif',
+    previewImage: '/images/salon_preview.mp4',
+    heroImage: '/images/salon_preview.mp4',
     githubUrl: 'https://github.com/manikumaragarwal/28-degree-salon',
     liveUrl: 'https://28-degree-salon.vercel.app',
-    tags: ['WhatsApp AI', 'Business Automation', 'Rapid Engineering', 'Client Solution'],
-    role: 'AI Automation Developer',
-    timeline: 'Overnight Rapid Sprint (1 Night)',
+    showcaseUrl: '/showcases/28-degree-salon.html',
+    tags: ['WhatsApp AI', 'Business Automation', 'Client Project', 'Node.js'],
+    role: 'Solo Developer',
+    timeline: 'One Night Build',
     team: ['Manish Agarwal'],
     tools: ['WhatsApp Cloud API', 'Node.js', 'Conversational AI', 'Webhooks'],
-    tldr: 'I built a WhatsApp AI-automation workflow for 28 Degree, a Delhi salon chain, in roughly one night. I had to figure out the tools, understand the business workflow, build the automation, and get it working under a very tight deadline. The project taught me that I can learn any tool while actively solving the problem.',
+    tldr: 'A Delhi salon chain needed a WhatsApp booking bot and they needed it fast. I had never used these specific APIs before. I figured out the tools, mapped the business flow, built the automation, and shipped it live in roughly 14 hours. The project taught me that I can pick up any tool while actively solving the problem.',
     background: {
-      title: "High Stakes & Tight Turnaround",
+      title: "Tight Deadline, Real Stakes",
       content: [
-        "28 Degree, a popular salon chain in Delhi, was losing customer bookings during off-hours due to delayed response times on WhatsApp.",
-        "They needed an intelligent, conversational booking and inquiry automation system deployed immediately before an upcoming marketing push."
+        "28 Degree, a salon chain in Delhi, was losing bookings during off-hours because nobody was responding to WhatsApp messages fast enough.",
+        "They had a marketing push coming and needed an automated booking system deployed before it launched."
       ],
       callout: {
         stat: '1 Night',
-        label: 'from zero architecture to live production deployment handling customer booking inquiries.'
+        label: 'from zero to live production deployment handling real customer bookings.'
       }
     },
     problem: {
-      title: "Overcoming Tool Friction Under Pressure",
+      title: "Learning the Tools While Building the Thing",
       content: [
-        "I had not worked with this specific combination of APIs before. The challenge was mastering the API ecosystem, conversational state machines, and booking edge cases in real time without compromising reliability."
+        "I had not used this combination of APIs before. The challenge was figuring out the WhatsApp Cloud API, building reliable conversation flows, and handling edge cases, all in one night."
       ],
       painPoints: [
-        'Lost customer booking revenue during peak off-peak inquiry hours',
-        'Complex multi-branch service catalog and pricing variations',
-        'Zero tolerance for system downtime or hallucinated appointment slots'
+        'Customers messaging during off-hours and getting no response',
+        'Multiple branches with different services and pricing',
+        'The bot could not make up appointment times or get prices wrong'
       ]
     },
     process: {
       title: "The Overnight Build",
-      description: "Rapid iteration moving from business requirements to webhook architecture, intent classification, and live deployment in under 14 hours.",
+      description: "From business requirements to webhook architecture to live deployment in under 14 hours.",
       steps: [
         {
-          phase: 'Hours 0-4: Business Flow & API Provisioning',
-          details: 'Mapped customer intents: service inquiries, branch locations, stylist availability, and appointment confirmation.'
+          phase: 'Hours 0-4: Understanding the Business',
+          details: 'Mapped out what customers actually ask about: services, branch locations, stylist availability, booking confirmation.'
         },
         {
-          phase: 'Hours 5-10: State Machine & AI Logic',
-          details: 'Built reliable intent classification with guardrails preventing hallucinated booking times or pricing errors.'
+          phase: 'Hours 5-10: Building the Bot Logic',
+          details: 'Built intent classification with strict rules so the bot could never hallucinate booking times or make up prices.'
         },
         {
-          phase: 'Hours 11-14: Testing & Production Launch',
-          details: 'Conducted end-to-end stress testing across multiple test accounts and handed over the live production deployment.'
+          phase: 'Hours 11-14: Testing and Handoff',
+          details: 'Stress-tested across multiple accounts and deployed the live production system.'
         }
       ]
     },
     finalProduct: {
-      title: "28 Degree AI Concierge",
-      description: "An automated WhatsApp assistant that guides clients smoothly from service selection to confirmed booking.",
+      title: "28 Degree Booking Bot",
+      description: "A WhatsApp assistant that takes customers from their first question to a confirmed appointment.",
       highlights: [
         {
-          title: 'Zero-Friction Intake',
-          description: 'Instant response times to salon inquiries with automated branch-specific service suggestions.',
-          badge: 'Instant Response'
+          title: 'Instant Replies',
+          description: 'Responds to salon inquiries immediately with the right services for each branch location.',
+          badge: 'Always On'
         },
         {
-          title: 'Reliable Guardrails',
-          description: 'Strict deterministic pricing and booking verification preventing AI miscommunication.',
+          title: 'Strict Accuracy',
+          description: 'Pricing and availability are pulled from real data. The bot never guesses or makes things up.',
           badge: 'Production Safe'
         }
       ]
     },
     impact: {
-      title: "Real World Business Value",
+      title: "Results",
       metrics: [
-        { value: '< 2s', label: 'Average customer response latency' },
-        { value: '24/7', label: 'Autonomous inquiry handling' },
-        { value: '14h', label: 'Concept to live deployment' }
+        { value: '< 2s', label: 'Response time to customer messages' },
+        { value: '24/7', label: 'Handles inquiries even when staff are off' },
+        { value: '14h', label: 'From nothing to live deployment' }
       ],
       quote: {
-        text: "The project taught me something I value more than knowing a particular tool: I can learn any tool while solving the problem.",
+        text: "This project taught me something I value more than knowing a specific tool: I can learn any tool while solving the problem.",
         author: 'Manish Agarwal'
       }
     }
@@ -376,7 +380,7 @@ export const PROJECTS: Project[] = [
     id: 'voice-enhancement-system',
     slug: 'voice-enhancement-system',
     title: 'Voice Enhancement Pipeline',
-    tagline: 'Removing friction from the creative process: bad recording → noise reduction → voice enhancement → usable audio.',
+    tagline: 'Bad recording goes in, clean audio comes out. One command.',
     clientOrContext: 'Audio Systems',
     year: '2026',
     statusBadge: {
@@ -386,76 +390,77 @@ export const PROJECTS: Project[] = [
     previewImage: '/images/audio_enhancement_pipeline.svg',
     heroImage: '/images/audio_enhancement_pipeline.svg',
     githubUrl: 'https://github.com/manikumaragarwal/audio-enhancement-pipeline',
-    tags: ['Audio AI', 'Noise Reduction', 'Voice Clarity', 'Friction Removal'],
-    role: 'Audio Workflow Builder',
+    showcaseUrl: '/showcases/voice-enhancement.html',
+    tags: ['Audio Processing', 'Noise Reduction', 'Python', 'FFmpeg'],
+    role: 'Builder',
     timeline: '2026',
     team: ['Manish Agarwal'],
     tools: ['Python', 'FFmpeg', 'Audio Processing', 'Whisper'],
-    tldr: 'Good content shouldn\'t require perfect recording conditions. I built an automated audio-processing workflow for improving recorded voice: bad recording → noise reduction → voice enhancement → usable audio. It removes friction so more creative energy goes into the idea itself.',
+    tldr: 'Good ideas do not wait for perfect recording conditions. I built an audio processing script that takes noisy voice memos and makes them usable: noise reduction, voice cleanup, export. One command, no manual fiddling. The less time I spend on production, the more goes into the actual idea.',
     background: {
-      title: "Friction is the Enemy of Great Ideas",
+      title: "Ideas Happen in Noisy Places",
       content: [
-        "Many of the best creator observations happen in noisy environments: walking down a street, in a café, or during a quick phone voice memo.",
-        "When audio requires 30 minutes of manual filtering in Audition just to be usable, creators hesitate to capture spontaneous thoughts."
+        "Some of the best observations happen while walking down a street, sitting in a cafe, or recording a quick voice memo on the phone.",
+        "But when it takes 30 minutes of manual cleanup in Audition just to make that audio usable, you start hesitating to record anything at all."
       ],
       callout: {
-        stat: '1-Click',
-        label: 'Automated conversion from noisy phone voice memos to podcast-ready vocal clarity.'
+        stat: '1 Command',
+        label: 'Takes a noisy phone voice memo and makes it clean enough for video or a podcast.'
       }
     },
     problem: {
-      title: "The Cost of Studio Perfectionism",
+      title: "Too Much Time on Cleanup, Not Enough on Ideas",
       content: [
-        "Creators spend excessive energy stressing over microphone setups rather than focusing on the clarity and resonance of the underlying argument."
+        "I was spending more energy worrying about microphone quality and room noise than on what I was actually saying. That felt backwards."
       ],
       painPoints: [
-        'Discarded valuable insights due to environmental room echo or traffic rumble',
-        'Slow manual equalization and multi-band compression workflows',
-        'Barrier to rapid voice memo publishing'
+        'Good ideas thrown away because the recording had too much background noise',
+        'Manual EQ and compression in Audition taking forever',
+        'The friction of cleanup made me record less'
       ]
     },
     process: {
-      title: "Automated Audio Processing Pipeline",
-      description: "A fast script pipeline combining multi-stage spectral de-noising, adaptive EQ, and vocal formant clarity enhancement.",
+      title: "How the Pipeline Works",
+      description: "A Python script that chains noise removal, voice enhancement, and export into one command.",
       steps: [
         {
-          phase: 'Step 1: Noise Floor Profiling',
-          details: 'Automatically detects ambient room noise profiles and applies non-destructive spectral subtractive filtering.'
+          phase: 'Step 1: Noise Detection',
+          details: 'Automatically figures out the ambient noise profile and removes it without touching the voice.'
         },
         {
-          phase: 'Step 2: Vocal Formant Enhancement',
-          details: 'Applies dynamic frequency curve boosting vocal presence frequencies (1.5kHz - 4kHz) while suppressing sibilance.'
+          phase: 'Step 2: Voice Enhancement',
+          details: 'Boosts the vocal frequencies that make speech clear on phone speakers, while cutting harshness.'
         },
         {
-          phase: 'Step 3: Export & Cloud Sync',
-          details: 'Directly syncs the cleaned audio file to the video editing workspace ready for Remotion or Premiere.'
+          phase: 'Step 3: Export',
+          details: 'Cleaned audio file gets saved directly to the editing workspace, ready for Remotion or Premiere.'
         }
       ]
     },
     finalProduct: {
-      title: "Instant Audio Clarity Engine",
-      description: "A lightweight utility that strips away recording friction.",
+      title: "One-Command Audio Cleanup",
+      description: "A small utility that takes the boring parts out of working with recorded audio.",
       highlights: [
         {
-          title: 'Automated Spectral Cleaning',
-          description: 'Removes air conditioner hum, traffic rumble, and room reverb in seconds.',
+          title: 'Noise Removal',
+          description: 'Handles AC hum, traffic, room echo. The common stuff that makes phone recordings sound amateur.',
           badge: 'Clean Audio'
         },
         {
-          title: 'Warm Voice Presence',
-          description: 'Optimizes dynamic vocal compression for short-form mobile speaker playback.',
-          badge: 'Mobile Optimized'
+          title: 'Voice Clarity',
+          description: 'Optimizes the vocal range for how people actually listen: phone speakers, earbuds, laptop audio.',
+          badge: 'Mobile Ready'
         }
       ]
     },
     impact: {
-      title: "Creativity Acceleration",
+      title: "What Changed",
       metrics: [
-        { value: '90%', label: 'Reduction in audio prep turnaround' },
-        { value: '100%', label: 'Spontaneous ideas captured and made production-ready' }
+        { value: '90%', label: 'less time on audio prep' },
+        { value: 'More', label: 'ideas recorded because the friction is gone' }
       ],
       quote: {
-        text: "The easier production becomes, the more energy can go into the idea itself.",
+        text: "The less time production takes, the more energy goes into the idea itself.",
         author: 'Manish Agarwal'
       }
     }

@@ -60,6 +60,16 @@ export const WorksGrid: React.FC<WorksGridProps> = ({ onSelectProject }) => {
                       </div>
                     </div>
                   </div>
+                ) : project.previewImage.endsWith('.mp4') ? (
+                  <video
+                    src={getAssetUrl(project.previewImage)}
+                    poster={getAssetUrl(project.previewImage.replace('.mp4', '_poster.jpg'))}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
+                  />
                 ) : (
                   <img
                     src={getAssetUrl(project.previewImage)}

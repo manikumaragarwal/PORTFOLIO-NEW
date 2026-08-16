@@ -16,6 +16,7 @@ export interface Project {
   heroImage: string;
   githubUrl?: string;
   liveUrl?: string;
+  showcaseUrl?: string;
   tags: string[];
   role: string;
   timeline: string;

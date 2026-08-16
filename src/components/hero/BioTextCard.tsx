@@ -12,7 +12,7 @@ export const BioTextCard: React.FC<BioTextCardProps> = ({ onCopyToast }) => {
   const handleCopyBio = () => {
     sounds.click();
     navigator.clipboard.writeText(
-      "Manish Agarwal — I build systems around content.\nCONTENT / AI / SYSTEMS / DISTRIBUTION\nCurrently looking for interesting problems to solve."
+      "Manish Agarwal. I build systems around content.\nCONTENT / AI / SYSTEMS / DISTRIBUTION\nCurrently looking for interesting problems to solve."
     );
     setCopied(true);
     onCopyToast?.();

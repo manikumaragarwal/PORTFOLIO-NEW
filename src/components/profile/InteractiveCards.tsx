@@ -128,7 +128,7 @@ export const InteractiveCards: React.FC<InteractiveCardsProps> = ({ onCopyToast 
       {/* 5. Contact & Connect Card */}
       <div className="p-4 rounded-xl bg-blue-50/60 border border-blue-200/70 flex items-center justify-between gap-3">
         <div>
-          <div className="text-xs font-semibold text-blue-950">Let's build something delightful.</div>
+          <div className="text-xs font-semibold text-blue-950">Have an interesting problem? Let's talk.</div>
           <div className="text-[11px] font-mono text-blue-700/80">{PROFILE_INFO.email}</div>
         </div>
 

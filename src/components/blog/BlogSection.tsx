@@ -42,7 +42,7 @@ export const BlogSection: React.FC = () => {
         </h2>
 
         <p className="text-zinc-600 text-sm sm:text-base max-w-2xl font-sans">
-          Dissections of creator retention curves, founder content systems, AI augmentation philosophy, and scalable distribution engineering.
+          Dissections of creator retention, content systems, how I think about AI, and experiments in distribution.
         </p>
       </div>
 

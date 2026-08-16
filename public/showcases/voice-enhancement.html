@@ -3,142 +3,162 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Voice Enhancement Pipeline • Studio Audio Engine</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Voice Enhancement Pipeline - Automated Audio Cleanup</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    code, .font-mono { font-family: 'JetBrains Mono', monospace; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #09090b; color: #f4f4f5; padding: 2rem; min-height: 100vh; }
+    code, .mono { font-family: 'JetBrains Mono', monospace; }
+    .container { max-width: 72rem; margin: 0 auto; }
+    .header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #27272a; padding-bottom: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+    .header-left { display: flex; align-items: center; gap: 0.75rem; }
+    .header-icon { width: 2.5rem; height: 2.5rem; border-radius: 0.75rem; background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .header h1 { font-size: 1rem; font-weight: 700; letter-spacing: -0.02em; }
+    .header p { font-size: 0.7rem; color: #a1a1aa; font-family: 'JetBrains Mono', monospace; }
+    .badge { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); color: #fbbf24; }
+
+    .grid-main { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+    @media(min-width:768px) { .grid-main { grid-template-columns: 7fr 5fr; } }
+
+    .panel { background: rgba(24,24,27,0.9); border: 1px solid #27272a; border-radius: 1rem; padding: 1.5rem; }
+    .panel-title { font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: #a1a1aa; font-weight: 600; margin-bottom: 1rem; }
+
+    /* Waveform Comparison */
+    .waveform-card { background: rgba(9,9,11,0.8); border: 1px solid #27272a; border-radius: 0.75rem; padding: 1rem; margin-bottom: 1rem; }
+    .wf-header { display: flex; justify-content: space-between; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: #71717a; margin-bottom: 0.75rem; }
+    .wf-bars { display: flex; align-items: center; gap: 2px; height: 3.5rem; }
+    .w-bar { flex: 1; border-radius: 2px; min-width: 3px; }
+    .w-noisy { background: #ef4444; opacity: 0.6; }
+    .w-clean { background: #f59e0b; }
+
+    .terminal-box { margin-top: 1rem; background: rgba(9,9,11,0.95); border: 1px solid #27272a; border-radius: 0.75rem; padding: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; line-height: 1.7; color: #d4d4d8; }
+    .t-dim { color: #71717a; }
+    .t-ok { color: #fbbf24; }
+
+    /* Processing Highlights */
+    .right-card { background: linear-gradient(to bottom, rgba(245,158,11,0.12), #18181b, #18181b); border: 1px solid rgba(245,158,11,0.3); border-radius: 1rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; }
+    .rc-steps { display: flex; flex-direction: column; gap: 0.75rem; }
+    .rc-step { padding: 0.75rem; border-radius: 0.5rem; background: rgba(9,9,11,0.7); border: 1px solid #27272a; }
+    .rc-tag { font-size: 0.65rem; font-family: 'JetBrains Mono', monospace; color: #fbbf24; font-weight: 600; text-transform: uppercase; margin-bottom: 0.2rem; }
+    .rc-step h4 { font-size: 0.8rem; font-weight: 600; color: #f4f4f5; margin-bottom: 0.2rem; }
+    .rc-step p { font-size: 0.68rem; color: #a1a1aa; line-height: 1.45; }
+
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid #27272a; }
+    .s-box { background: rgba(9,9,11,0.6); padding: 0.75rem; border-radius: 0.75rem; border: 1px solid #27272a; text-align: center; }
+    .s-val { font-size: 1.15rem; font-weight: 700; color: #fbbf24; font-family: 'JetBrains Mono', monospace; }
+    .s-label { font-size: 0.6rem; color: #71717a; text-transform: uppercase; letter-spacing: 0.08em; font-family: 'JetBrains Mono', monospace; margin-top: 0.2rem; }
   </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 min-h-screen selection:bg-orange-500 selection:text-white p-8 sm:p-12 space-y-12">
-
-  <!-- Header Nav -->
-  <header class="max-w-6xl mx-auto flex items-center justify-between border-b border-zinc-800/80 pb-6">
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl bg-orange-600/20 border border-orange-500/30 flex items-center justify-center text-orange-400 text-lg shadow-inner">
-        🎙️
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-left">
+        <div class="header-icon">🎙️</div>
+        <div>
+          <h1>Voice Enhancement Pipeline</h1>
+          <p>Automated Spectral De-noising & Vocal Formant Optimization</p>
+        </div>
       </div>
-      <div>
-        <h1 class="text-base font-bold text-white tracking-tight leading-tight">Voice Enhancement Engine</h1>
-        <p class="text-xs font-mono text-zinc-400">Automated Phone Voice Memo → Studio Vocal Presence</p>
+      <span class="badge">● Command-Line Tool</span>
+    </header>
+
+    <div class="grid-main">
+      <div class="panel">
+        <div class="panel-title">Before & After Audio Frequency Profile</div>
+        
+        <!-- Raw Audio Waveform -->
+        <div class="waveform-card">
+          <div class="wf-header">
+            <span style="color:#f87171">RAW INPUT (Phone Voice Memo + Traffic Rumble)</span>
+            <span>SNR: 12dB</span>
+          </div>
+          <div class="wf-bars">
+            <div class="w-bar w-noisy" style="height:45%"></div>
+            <div class="w-bar w-noisy" style="height:75%"></div>
+            <div class="w-bar w-noisy" style="height:90%"></div>
+            <div class="w-bar w-noisy" style="height:60%"></div>
+            <div class="w-bar w-noisy" style="height:85%"></div>
+            <div class="w-bar w-noisy" style="height:100%"></div>
+            <div class="w-bar w-noisy" style="height:70%"></div>
+            <div class="w-bar w-noisy" style="height:80%"></div>
+            <div class="w-bar w-noisy" style="height:55%"></div>
+            <div class="w-bar w-noisy" style="height:95%"></div>
+            <div class="w-bar w-noisy" style="height:80%"></div>
+            <div class="w-bar w-noisy" style="height:65%"></div>
+            <div class="w-bar w-noisy" style="height:90%"></div>
+            <div class="w-bar w-noisy" style="height:70%"></div>
+            <div class="w-bar w-noisy" style="height:85%"></div>
+            <div class="w-bar w-noisy" style="height:50%"></div>
+          </div>
+        </div>
+
+        <!-- Cleaned Audio Waveform -->
+        <div class="waveform-card">
+          <div class="wf-header">
+            <span style="color:#fbbf24">ENHANCED OUTPUT (Spectral Cleaned + Mobile Vocal EQ)</span>
+            <span style="color:#fbbf24">SNR: 42dB (+30dB)</span>
+          </div>
+          <div class="wf-bars">
+            <div class="w-bar w-clean" style="height:15%"></div>
+            <div class="w-bar w-clean" style="height:65%"></div>
+            <div class="w-bar w-clean" style="height:80%"></div>
+            <div class="w-bar w-clean" style="height:25%"></div>
+            <div class="w-bar w-clean" style="height:75%"></div>
+            <div class="w-bar w-clean" style="height:90%"></div>
+            <div class="w-bar w-clean" style="height:35%"></div>
+            <div class="w-bar w-clean" style="height:70%"></div>
+            <div class="w-bar w-clean" style="height:20%"></div>
+            <div class="w-bar w-clean" style="height:85%"></div>
+            <div class="w-bar w-clean" style="height:65%"></div>
+            <div class="w-bar w-clean" style="height:15%"></div>
+            <div class="w-bar w-clean" style="height:80%"></div>
+            <div class="w-bar w-clean" style="height:30%"></div>
+            <div class="w-bar w-clean" style="height:70%"></div>
+            <div class="w-bar w-clean" style="height:15%"></div>
+          </div>
+        </div>
+
+        <!-- CLI Output -->
+        <div class="terminal-box">
+          <span class="t-dim">$ python3 enhance.py --input memo_0814.m4a --target podcast</span><br>
+          <span class="t-ok">✔ Noise profile sampled: -48dB ambient floor (AC hum removed)</span><br>
+          <span class="t-ok">✔ Formant presence boosted @ 2.8kHz (+3.5dB vocal warmth)</span><br>
+          <span class="t-ok">✔ Rendered: /exports/memo_0814_clean.wav [0.8s runtime]</span>
+        </div>
+      </div>
+
+      <div class="right-card">
+        <div>
+          <div class="panel-title" style="color:#fbbf24">Processing Chain</div>
+          <div class="rc-steps">
+            <div class="rc-step">
+              <div class="rc-tag">01 · Noise Profiling</div>
+              <h4>Spectral Subtraction</h4>
+              <p>Detects non-harmonic noise floor patterns and subtracts them without clipping vocal consonants.</p>
+            </div>
+
+            <div class="rc-step">
+              <div class="rc-tag">02 · Frequency Shaper</div>
+              <h4>Formant Presence EQ</h4>
+              <p>Enhances 1.5kHz – 4kHz vocal resonance range so voice sounds crisp on phone speakers.</p>
+            </div>
+
+            <div class="rc-step">
+              <div class="rc-tag">03 · Dynamic Compression</div>
+              <h4>Level Normalization</h4>
+              <p>Levels out whisper-to-shout volume variations into clean, broadcast-ready -14 LUFS audio.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="s-box"><div class="s-val">1-Click</div><div class="s-label">Zero Friction</div></div>
+          <div class="s-box"><div class="s-val">90%</div><div class="s-label">Time Saved</div></div>
+          <div class="s-box"><div class="s-val">&lt;1s</div><div class="s-label">Processing</div></div>
+        </div>
       </div>
     </div>
-    <div class="flex items-center gap-2">
-      <span class="px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-mono">
-        ● Spectral Denoise: ON
-      </span>
-      <span class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs font-mono">
-        48kHz 24-Bit
-      </span>
-    </div>
-  </header>
-
-  <!-- Main Audio Workbench -->
-  <main class="max-w-6xl mx-auto space-y-10">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
-      
-      <!-- Audio Waveform Comparison Monitor -->
-      <div class="md:col-span-7 bg-zinc-900/90 border border-zinc-800 rounded-2xl p-6 shadow-2xl space-y-5">
-        <div class="flex items-center justify-between border-b border-zinc-800 pb-3 text-xs font-mono text-zinc-400">
-          <span>BEFORE & AFTER SPECTRAL PROCESSING</span>
-          <span class="text-orange-400">NOISE FLOOR: -64dB</span>
-        </div>
-
-        <!-- Raw Audio Waveform (Noisy) -->
-        <div class="space-y-1.5">
-          <div class="flex justify-between text-[11px] font-mono text-zinc-400">
-            <span>Raw iPhone Voice Memo (Street Noise + Room Echo)</span>
-            <span class="text-rose-400">Unprocessed</span>
-          </div>
-          <div class="w-full h-14 bg-zinc-950 rounded-xl border border-zinc-800/80 flex items-center justify-center p-2 relative overflow-hidden">
-            <div class="w-full h-8 flex items-center justify-between gap-1 opacity-40">
-              <span class="w-1 bg-zinc-600 h-6 rounded-full"></span>
-              <span class="w-1 bg-zinc-600 h-8 rounded-full"></span>
-              <span class="w-1 bg-zinc-600 h-5 rounded-full"></span>
-              <span class="w-1 bg-zinc-600 h-7 rounded-full"></span>
-              <span class="w-1 bg-zinc-600 h-8 rounded-full"></span>
-              <span class="w-1 bg-zinc-600 h-4 rounded-full"></span>
-              <span class="w-1 bg-zinc-600 h-7 rounded-full"></span>
-              <span class="w-1 bg-zinc-600 h-8 rounded-full"></span>
-              <span class="w-1 bg-zinc-600 h-6 rounded-full"></span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Clean Studio Waveform (Enhanced) -->
-        <div class="space-y-1.5">
-          <div class="flex justify-between text-[11px] font-mono text-zinc-300">
-            <span>Cleaned & Enhanced Vocal Track (Subtractive EQ + Formant Boost)</span>
-            <span class="text-emerald-400 font-bold">Studio Ready ✔</span>
-          </div>
-          <div class="w-full h-14 bg-zinc-950 rounded-xl border border-orange-500/30 flex items-center justify-center p-2 relative overflow-hidden shadow-inner">
-            <div class="w-full h-10 flex items-center justify-between gap-1">
-              <span class="w-1 bg-orange-400 h-4 rounded-full"></span>
-              <span class="w-1 bg-orange-400 h-9 rounded-full"></span>
-              <span class="w-1 bg-orange-400 h-3 rounded-full"></span>
-              <span class="w-1 bg-orange-400 h-10 rounded-full"></span>
-              <span class="w-1 bg-orange-400 h-7 rounded-full"></span>
-              <span class="w-1 bg-orange-400 h-2 rounded-full"></span>
-              <span class="w-1 bg-orange-400 h-8 rounded-full"></span>
-              <span class="w-1 bg-orange-400 h-10 rounded-full"></span>
-              <span class="w-1 bg-orange-400 h-5 rounded-full"></span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Status Metrics -->
-        <div class="pt-3 grid grid-cols-3 gap-3 border-t border-zinc-800/80 text-center">
-          <div class="bg-zinc-950/60 p-3 rounded-xl border border-zinc-800/60">
-            <div class="text-lg font-bold text-white font-mono">-32dB</div>
-            <div class="text-[10px] text-zinc-400 uppercase tracking-wider font-mono">Room Hum Cut</div>
-          </div>
-          <div class="bg-zinc-950/60 p-3 rounded-xl border border-zinc-800/60">
-            <div class="text-lg font-bold text-orange-400 font-mono">+4dB</div>
-            <div class="text-[10px] text-zinc-400 uppercase tracking-wider font-mono">Presence @ 3kHz</div>
-          </div>
-          <div class="bg-zinc-950/60 p-3 rounded-xl border border-zinc-800/60">
-            <div class="text-lg font-bold text-emerald-400 font-mono">1-Click</div>
-            <div class="text-[10px] text-zinc-400 uppercase tracking-wider font-mono">CLI Pipeline</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Feature Highlights Card -->
-      <div class="md:col-span-5 bg-gradient-to-b from-orange-950/30 via-zinc-900 to-zinc-900 border border-orange-500/30 rounded-2xl p-6 flex flex-col justify-between shadow-xl">
-        <div class="space-y-4">
-          <div class="flex items-center justify-between text-xs font-mono text-orange-300">
-            <span>PIPELINE CAPABILITIES</span>
-            <span class="px-2 py-0.5 rounded bg-orange-500/20 text-orange-300 border border-orange-500/40">Zero Friction</span>
-          </div>
-
-          <h3 class="text-xl font-bold text-white leading-snug">
-            Never Discard a Great Voice Idea Again
-          </h3>
-
-          <div class="space-y-2 text-xs text-zinc-300 font-sans">
-            <div class="p-2.5 rounded-lg bg-zinc-950/70 border border-zinc-800">
-              <span class="text-orange-400 font-mono font-semibold">Adaptive Noise Profiling:</span> Automatic ambient room hum detection in under 300ms.
-            </div>
-            <div class="p-2.5 rounded-lg bg-zinc-950/70 border border-zinc-800">
-              <span class="text-orange-400 font-mono font-semibold">Formant Warmth:</span> Multi-band dynamic EQ tailored for mobile speaker resonance.
-            </div>
-            <div class="p-2.5 rounded-lg bg-zinc-950/70 border border-zinc-800">
-              <span class="text-orange-400 font-mono font-semibold">Direct Video Sync:</span> Outputs 48kHz audio instantly syncable to Remotion code.
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-4 mt-4 border-t border-zinc-800/80 flex items-center justify-between text-xs font-mono text-zinc-400">
-          <span>Speed: Under 2 Seconds</span>
-          <span class="text-orange-400 font-bold">100% Usable Audio</span>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
+  </div>
 </body>
 </html>

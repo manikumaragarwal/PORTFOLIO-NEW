@@ -44,7 +44,7 @@ export const PROFILE_PHOTOS: ProfileGalleryPhoto[] = [
 
 export const PROFILE_INFO = {
   name: 'Manish Agarwal',
-  title: 'Content Systems & AI Specialist',
+  title: 'English Student, Content Systems Builder',
   location: 'India',
   email: 'manishpshyco1969@gmail.com',
   education: 'English Literature & Digital Systems (2026)',
@@ -56,9 +56,9 @@ export const PROFILE_INFO = {
     resume: '/Manish_Agarwal_Resume.pdf'
   },
   bioParagraphs: [
-    "I'm less interested in making content than understanding why it works. I started by editing Reels. Then I became curious about hooks. Then retention. Then storytelling. Then creator identity. Then distribution. Eventually I realized that the interesting problem isn't any one of these things individually — it's the system connecting all of them.",
+    "I'm less interested in making content than understanding why it works. I started by editing Reels. Then I got curious about hooks. Then retention. Then storytelling. Then creator identity. Then distribution. Eventually I realized the interesting problem is not any one of these things individually, it's the system connecting all of them.",
     "So I started building things. Some are useful. Some are weird. Some are probably over-engineered. But almost everything I build starts with the same question: 'Could this be done better?'",
-    "I use AI as a building material — for prototyping tools, automating repetitive work, analyzing content, and accelerating production. Give me a tool I've never used and a problem I care about, and I'll figure it out."
+    "I use AI as a building material, for prototyping tools, automating repetitive work, analyzing content, and speeding up production. Give me a tool I have never used and a problem I care about, and I will figure it out."
   ],
   exploringText: 'Prompt engineering, Remotion pipelines, and creator skill files!',
   afterHoursText: 'Reading literature, analyzing creator hook retention curves, and brewing ginger chai.',

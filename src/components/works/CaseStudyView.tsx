@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Project } from '../../types';
-import { ArrowLeft, ArrowRight, CheckCircle2, Award, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CheckCircle2, Award, ExternalLink, Sparkles } from 'lucide-react';
 import { PROJECTS } from '../../data/projects';
 import { sounds } from '../layout/SoundEffects';
 import { getAssetUrl } from '../../utils/assets';
@@ -105,11 +105,23 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({ project, onBack, o
         
         {/* Hero Visual Mockup Banner */}
         <div className="w-full aspect-[21/10] max-h-[460px] bg-zinc-950 rounded-2xl overflow-hidden shadow-xl border border-black/10 relative mb-10">
-          <img
-            src={getAssetUrl(project.heroImage)}
-            alt={project.title}
-            className="w-full h-full object-cover object-top"
-          />
+          {project.heroImage.endsWith('.mp4') ? (
+            <video
+              src={getAssetUrl(project.heroImage)}
+              poster={getAssetUrl(project.heroImage.replace('.mp4', '_poster.jpg'))}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover object-top"
+            />
+          ) : (
+            <img
+              src={getAssetUrl(project.heroImage)}
+              alt={project.title}
+              className="w-full h-full object-cover object-top"
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
         </div>
 
@@ -145,8 +157,20 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({ project, onBack, o
           </div>
 
           {/* Direct Project Action Links (GitHub & Live App) */}
-          {(project.githubUrl || project.liveUrl) && (
+          {(project.githubUrl || project.liveUrl || project.showcaseUrl) && (
             <div className="flex flex-wrap items-center gap-3 pt-2">
+              {project.showcaseUrl && (
+                <a
+                  href={getAssetUrl(project.showcaseUrl)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => sounds.click()}
+                  className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-mono font-medium flex items-center gap-2 shadow-xs transition hover:scale-105"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-purple-200" />
+                  <span>Interactive System Explainer</span>
+                </a>
+              )}
               {project.liveUrl && (
                 <a
                   href={project.liveUrl}
@@ -354,6 +378,38 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({ project, onBack, o
                     </p>
                   </div>
                 ))}
+
+                {project.showcaseUrl && (
+                  <div className="p-5 sm:p-6 bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-950 text-white rounded-2xl border border-zinc-800 shadow-md space-y-3">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <div className="flex items-center gap-2 text-xs font-mono text-purple-400 font-semibold">
+                        <Sparkles className="w-4 h-4 text-purple-400" />
+                        <span>INTERACTIVE SYSTEM BREAKDOWN</span>
+                      </div>
+                      <span className="px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 text-[10px] font-mono">
+                        Pure HTML/CSS
+                      </span>
+                    </div>
+                    <div>
+                      <h4 className="text-base font-bold text-white">Visual Pipeline & Architecture</h4>
+                      <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
+                        Explore an interactive visual walkthrough of how the data flows, state machines execute, and outputs are generated.
+                      </p>
+                    </div>
+                    <div className="pt-1">
+                      <a
+                        href={getAssetUrl(project.showcaseUrl)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => sounds.click()}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-mono font-medium shadow-xs transition hover:scale-105 cursor-pointer"
+                      >
+                        <span>Launch Visual Explainer</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  </div>
+                )}
               </div>
             </section>
 
@@ -381,7 +437,7 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({ project, onBack, o
                     "{project.impact.quote.text}"
                   </p>
                   <div className="text-xs font-mono text-zinc-400">
-                    — {project.impact.quote.author}, <span className="text-zinc-500">{project.impact.quote.role}</span>
+                    {project.impact.quote.author}{project.impact.quote.role ? `, ${project.impact.quote.role}` : ''}
                   </div>
                 </div>
               )}

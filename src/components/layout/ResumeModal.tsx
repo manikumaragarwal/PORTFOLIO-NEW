@@ -67,7 +67,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             <div className="bg-zinc-50 p-3.5 rounded-lg border border-zinc-100 space-y-2">
               <div className="font-semibold text-zinc-900 text-sm">I build systems around content.</div>
               <div className="text-xs text-zinc-600 leading-relaxed">
-                21-year-old English student obsessed with the mechanics of attention — why people stop scrolling, why they keep watching, why they remember certain creators, and how AI can make the entire process of creating and distributing content more scalable.
+                21-year-old English student studying the mechanics of attention: why people stop scrolling, why they keep watching, why they remember certain creators, and how AI can make creating and distributing content more repeatable.
               </div>
               <div className="text-[11px] font-mono text-blue-700 font-medium pt-1">
                 CONTENT / AI / SYSTEMS / DISTRIBUTION
@@ -84,12 +84,12 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             <div className="space-y-3">
               <div className="bg-zinc-50 p-3 rounded-lg border border-zinc-100">
                 <div className="flex justify-between items-baseline font-medium text-zinc-900">
-                  <span className="font-semibold">WhatsApp AI Automation — 28 Degree Delhi</span>
+                  <span className="font-semibold">WhatsApp AI Automation (28 Degree Delhi)</span>
                   <span className="text-xs text-zinc-500 font-mono">2026</span>
                 </div>
                 <ul className="text-xs text-zinc-600 mt-2 space-y-1 list-disc list-inside">
-                  <li>Engineered automated AI customer intake and scheduling system for Delhi salon chain overnight.</li>
-                  <li>Integrated conversational AI pipelines with zero manual intervention for customer booking workflows.</li>
+                  <li>Built an automated AI customer intake and scheduling system for a Delhi salon chain in one night.</li>
+                  <li>Connected conversational AI with accurate booking slots and branch dispatch.</li>
                 </ul>
               </div>
 
@@ -99,14 +99,14 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                   <span className="text-xs text-zinc-500 font-mono">2025 - Present</span>
                 </div>
                 <ul className="text-xs text-zinc-600 mt-2 space-y-1 list-disc list-inside">
-                  <li>Built structured knowledge ingestion converting saved Reels into: ideas → hooks → formats → observations.</li>
+                  <li>Built structured knowledge ingestion converting saved Reels into: ideas, hooks, formats, observations.</li>
                   <li>Extracted Creator Skill Files mapping hook structures, vocabulary, and pacing rhythms.</li>
                 </ul>
               </div>
 
               <div className="bg-zinc-50 p-3 rounded-lg border border-zinc-100">
                 <div className="flex justify-between items-baseline font-medium text-zinc-900">
-                  <span className="font-semibold">Programmable Video Pipeline — Claude Code + Remotion</span>
+                  <span className="font-semibold">Programmable Video Pipeline (Claude Code + Remotion)</span>
                   <span className="text-xs text-zinc-500 font-mono">2026</span>
                 </div>
                 <ul className="text-xs text-zinc-600 mt-2 space-y-1 list-disc list-inside">
