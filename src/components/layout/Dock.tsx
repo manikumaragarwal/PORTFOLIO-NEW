@@ -64,8 +64,12 @@ export const Dock: React.FC<DockProps> = ({ activeSection, onSelectSection }) =>
       id: 'profile',
       label: 'profile',
       renderIcon: () => (
-        <div className="w-11 h-11 rounded-2xl bg-gradient-to-b from-zinc-800 via-zinc-900 to-black flex items-center justify-center text-white font-mono font-bold text-sm shadow-md relative group-hover:shadow-lg transition-all border border-zinc-700">
-          MA
+        <div className="w-11 h-11 rounded-2xl overflow-hidden p-0.5 bg-gradient-to-b from-sky-100 via-blue-100 to-blue-200 shadow-md relative group-hover:shadow-lg transition-all border border-blue-200/60">
+          <img
+            src="/images/manish_main_profile.jpg"
+            alt="Manish Agarwal"
+            className="w-full h-full object-cover rounded-xl"
+          />
         </div>
       )
     },

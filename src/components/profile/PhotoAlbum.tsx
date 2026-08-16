@@ -32,7 +32,7 @@ export const PhotoAlbum: React.FC = () => {
         </div>
 
         {/* Thumbnail Selector Strip */}
-        <div className="grid grid-cols-5 gap-2 pt-0.5">
+        <div className="grid grid-cols-4 gap-2 pt-0.5">
           {PROFILE_PHOTOS.map((photo) => {
             const isSelected = activePhoto.id === photo.id;
             return (

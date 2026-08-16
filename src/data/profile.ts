@@ -10,41 +10,33 @@ export interface ProfileGalleryPhoto {
 export const PROFILE_PHOTOS: ProfileGalleryPhoto[] = [
   {
     id: 'photo-1',
-    src: '/images/cindy_portrait.png',
-    alt: 'Manish Agarwal Workspace and Desk Setup',
-    caption: 'Desk & Content Systems Lab ⚡',
+    src: '/images/manish_main_profile.jpg',
+    alt: 'Manish Agarwal Portrait',
+    caption: '',
     location: 'India',
     year: '2026'
   },
   {
     id: 'photo-2',
-    src: '/images/gallery_cherry.png',
-    alt: 'Second Brain & Knowledge Architecture in Obsidian',
-    caption: 'Obsidian knowledge graph linking 200+ creator hooks',
-    location: 'Obsidian Vault',
+    src: '/images/manish_gallery_1.jpg',
+    alt: 'Manish Agarwal',
+    caption: '',
+    location: 'India',
     year: '2026'
   },
   {
     id: 'photo-3',
-    src: '/images/gallery_matcha.png',
-    alt: 'Afternoon tea and editing setup',
-    caption: 'Chai & Claude Code session',
-    location: 'Creative Lab',
+    src: '/images/manish_gallery_2.jpg',
+    alt: 'Manish Agarwal',
+    caption: '',
+    location: 'India',
     year: '2026'
   },
   {
     id: 'photo-4',
-    src: '/images/gallery_3dprint.png',
-    alt: 'Script breakdown and retention analysis notes',
-    caption: 'Hook analysis and pacing breakdown',
-    location: 'Studio',
-    year: '2026'
-  },
-  {
-    id: 'photo-5',
-    src: '/images/lamp_3d.png',
-    alt: 'Late night code and video automation workflows',
-    caption: 'Remotion automation build session',
+    src: '/images/manish_gallery_3.jpg',
+    alt: 'Manish Agarwal',
+    caption: '',
     location: 'India',
     year: '2026'
   }
