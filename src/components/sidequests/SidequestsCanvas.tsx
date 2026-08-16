@@ -179,7 +179,7 @@ export const SidequestsCanvas: React.FC = () => {
         </div>
       ) : (
         /* Desktop Freeform Draggable Canvas */
-        <div key={boardKey} className="relative w-full h-[820px] max-w-7xl mx-auto">
+        <div key={boardKey} className="relative w-full h-[660px] max-w-6xl mx-auto px-6">
           {items.map((item) => (
             <DraggableSticker
               key={item.id}

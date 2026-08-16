@@ -6,9 +6,9 @@ export const SIDEQUEST_ITEMS: SidequestItem[] = [
     title: 'Vibritt / Web Dev Agency',
     fileName: 'vibritt_agency.url',
     type: 'app',
-    initialX: 60,
-    initialY: 40,
-    rotation: -1.5,
+    initialX: 50,
+    initialY: 60,
+    rotation: 0,
     liveUrl: 'https://vibritt.vercel.app/',
     githubUrl: 'https://github.com/manikumaragarwal/Vibritt---Wesites-which-stops-your-sc',
     windowContent: {
@@ -29,9 +29,9 @@ export const SIDEQUEST_ITEMS: SidequestItem[] = [
     title: 'Dark Grimoiri / Harry Potter Store',
     fileName: 'dark_grimoiri.url',
     type: 'app',
-    initialX: 420,
-    initialY: 40,
-    rotation: 1.8,
+    initialX: 50,
+    initialY: 195,
+    rotation: 0,
     liveUrl: 'https://dark-grimoiri.vercel.app/',
     githubUrl: 'https://github.com/manikumaragarwal/Dark-Grimoiri',
     windowContent: {
@@ -52,9 +52,9 @@ export const SIDEQUEST_ITEMS: SidequestItem[] = [
     title: 'Pt. Laxmi Shanker Saraswati College',
     fileName: 'ptlss_college.url',
     type: 'app',
-    initialX: 780,
-    initialY: 40,
-    rotation: -1,
+    initialX: 50,
+    initialY: 330,
+    rotation: 0,
     liveUrl: 'https://ptlssicollege.in/',
     // No githubUrl as requested: only Live Preview button
     windowContent: {
@@ -71,14 +71,50 @@ export const SIDEQUEST_ITEMS: SidequestItem[] = [
     }
   },
   {
+    id: 'salon-28-degree-web',
+    title: '28 Degree Salon Platform',
+    fileName: '28_degree_salon.url',
+    type: 'app',
+    initialX: 50,
+    initialY: 465,
+    rotation: 0,
+    liveUrl: 'https://28-degree-salon.vercel.app',
+    githubUrl: 'https://github.com/manikumaragarwal/28-degree-salon',
+    windowContent: {
+      title: '28 Degree Salon Chain Platform',
+      category: 'Client Web Platform & AI System',
+      description: 'Website and WhatsApp booking automation for a salon chain in Delhi.',
+      fullStory: 'Built for 28 Degree salon chain in Delhi. Handles their online presence and connects to the WhatsApp booking bot for automated appointment scheduling.',
+      tags: ['Vercel Live', 'Delhi Salon', 'Production Client', 'WhatsApp AI']
+    }
+  },
+  {
+    id: 'dotfiles-linux-app',
+    title: 'i3wm Dotfiles & Setup',
+    fileName: 'mint_i3_dotfiles.sh',
+    type: 'file',
+    initialX: 185,
+    initialY: 60,
+    rotation: 0,
+    fileExt: 'sh',
+    githubUrl: 'https://github.com/manikumaragarwal/dotfiles',
+    windowContent: {
+      title: 'Linux Mint i3wm Workspace Setup',
+      category: 'Developer Environment & Tooling',
+      description: 'My Linux Mint i3wm dotfiles: i3, polybar, rofi, picom, alacritty, neovim, and zsh.',
+      fullStory: 'A keyboard-first tiling window manager setup. No distractions, fast switching, built for programming and content work.',
+      tags: ['i3wm', 'Linux Mint', 'Neovim', 'Dotfiles', 'Productivity']
+    }
+  },
+  {
     id: 'postit-content-dna',
     title: 'Founder Content DNA Memo',
     fileName: 'content_dna.txt',
     type: 'note',
-    initialX: 60,
-    initialY: 200,
-    rotation: -1.2,
-    width: 310,
+    initialX: 185,
+    initialY: 195,
+    rotation: -1,
+    width: 320,
     height: 320,
     bgColor: '#fefce8',
     textColor: '#422006',
@@ -102,11 +138,11 @@ Extract: beliefs, vocabulary, stories, quirks, and contrasts. That becomes their
     title: 'Content Beliefs Post-it',
     fileName: 'beliefs.txt',
     type: 'note',
-    initialX: 420,
-    initialY: 190,
-    rotation: 1.5,
-    width: 310,
-    height: 310,
+    initialX: 550,
+    initialY: 80,
+    rotation: 1,
+    width: 340,
+    height: 330,
     bgColor: '#f0fdf4',
     textColor: '#14532d',
     noteText: `Core Content Beliefs ✦
@@ -131,42 +167,6 @@ Extract: beliefs, vocabulary, stories, quirks, and contrasts. That becomes their
         ]
       },
       tags: ['Attention Mechanics', 'Creator Philosophy', 'Retention']
-    }
-  },
-  {
-    id: 'salon-28-degree-web',
-    title: '28 Degree Salon Platform',
-    fileName: '28_degree_salon.url',
-    type: 'app',
-    initialX: 780,
-    initialY: 200,
-    rotation: -1.4,
-    liveUrl: 'https://28-degree-salon.vercel.app',
-    githubUrl: 'https://github.com/manikumaragarwal/28-degree-salon',
-    windowContent: {
-      title: '28 Degree Salon Chain Platform',
-      category: 'Client Web Platform & AI System',
-      description: 'Website and WhatsApp booking automation for a salon chain in Delhi.',
-      fullStory: 'Built for 28 Degree salon chain in Delhi. Handles their online presence and connects to the WhatsApp booking bot for automated appointment scheduling.',
-      tags: ['Vercel Live', 'Delhi Salon', 'Production Client', 'WhatsApp AI']
-    }
-  },
-  {
-    id: 'dotfiles-linux-app',
-    title: 'i3wm Dotfiles & Setup',
-    fileName: 'mint_i3_dotfiles.sh',
-    type: 'file',
-    initialX: 60,
-    initialY: 530,
-    rotation: 1.2,
-    fileExt: 'sh',
-    githubUrl: 'https://github.com/manikumaragarwal/dotfiles',
-    windowContent: {
-      title: 'Linux Mint i3wm Workspace Setup',
-      category: 'Developer Environment & Tooling',
-      description: 'My Linux Mint i3wm dotfiles: i3, polybar, rofi, picom, alacritty, neovim, and zsh.',
-      fullStory: 'A keyboard-first tiling window manager setup. No distractions, fast switching, built for programming and content work.',
-      tags: ['i3wm', 'Linux Mint', 'Neovim', 'Dotfiles', 'Productivity']
     }
   }
 ];
