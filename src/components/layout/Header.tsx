@@ -37,13 +37,35 @@ export const Header: React.FC<HeaderProps> = ({ onNavigateHome, onCopyEmailToast
           }}
           className="flex items-center gap-2.5 sm:gap-3.5 text-left group focus:outline-none cursor-pointer"
         >
-          {/* Custom Geometric Knot Emblem SVG */}
-          <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-white/90 border border-zinc-200 shadow-xs flex items-center justify-center text-zinc-800 transition-all duration-200 group-hover:scale-105 group-hover:border-zinc-400 group-hover:shadow-md flex-shrink-0">
-            <svg className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="4" />
-              <path d="M7 12h10M12 7v10" />
-              <circle cx="12" cy="12" r="3" />
-              <path d="M7 7l10 10M17 7L7 17" opacity="0.4" />
+          {/* Standalone Brand Logo without background container */}
+          <div className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-zinc-900 group-hover:text-blue-600 transition-colors duration-200 flex-shrink-0">
+            <svg
+              className="w-full h-full transition-transform duration-300 group-hover:scale-110"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {/* Geometric Monogram: Interconnected M & A with focal node */}
+              <path
+                d="M4 25V7L11 19L16 10L21 19L28 7V25"
+                stroke="currentColor"
+                strokeWidth="2.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M10 20.5H22"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                opacity="0.8"
+              />
+              <circle
+                cx="16"
+                cy="20.5"
+                r="1.6"
+                fill="currentColor"
+              />
             </svg>
           </div>
 

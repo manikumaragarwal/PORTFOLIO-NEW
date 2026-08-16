@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Wrench, Clock, Disc, Copy, Check, Sparkles, Heart } from 'lucide-react';
 import { PROFILE_INFO } from '../../data/profile';
 import { sounds } from '../layout/SoundEffects';
+import { lofiPlayer } from '../../utils/lofiAudio';
 import confetti from 'canvas-confetti';
 
 interface InteractiveCardsProps {
@@ -13,6 +14,13 @@ export const InteractiveCards: React.FC<InteractiveCardsProps> = ({ onCopyToast 
   const [copied, setCopied] = useState(false);
   const [liked, setLiked] = useState(false);
 
+  // Stop music if navigating away
+  useEffect(() => {
+    return () => {
+      lofiPlayer.stop();
+    };
+  }, []);
+
   const handleCopyEmail = () => {
     sounds.click();
     navigator.clipboard.writeText(PROFILE_INFO.email);
@@ -23,7 +31,15 @@ export const InteractiveCards: React.FC<InteractiveCardsProps> = ({ onCopyToast 
 
   const handleToggleMusic = () => {
     sounds.click();
-    setIsPlayingMusic(!isPlayingMusic);
+    if (isPlayingMusic) {
+      lofiPlayer.stop();
+      setIsPlayingMusic(false);
+    } else {
+      const success = lofiPlayer.play();
+      if (success) {
+        setIsPlayingMusic(true);
+      }
+    }
   };
 
   const handleHeartClick = () => {
