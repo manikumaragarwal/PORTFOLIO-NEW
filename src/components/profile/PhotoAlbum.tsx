@@ -23,12 +23,12 @@ export const PhotoAlbum: React.FC = () => {
 
       {/* Main Active Photo Frame */}
       <div className="p-3 sm:p-4 flex flex-col space-y-3">
-        <div className="w-full aspect-[4/4] sm:aspect-[4/3.8] rounded-xs overflow-hidden bg-white border border-zinc-200/60 shadow-xs flex items-center justify-center relative group p-1">
+        <div className="w-full aspect-[4/4] sm:aspect-[4/3.8] overflow-hidden bg-white flex items-center justify-center relative group">
           <img
             key={activePhoto.id}
             src={getAssetUrl(activePhoto.src)}
             alt={activePhoto.alt}
-            className="w-full h-full object-contain rounded-xs transition-transform duration-300 group-hover:scale-[1.02] animate-fade-in"
+            className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.02] animate-fade-in"
           />
         </div>
 
