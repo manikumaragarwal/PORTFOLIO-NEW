@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, CheckCircle2, Award, ExternalLink, Sparkles } fr
 import { PROJECTS } from '../../data/projects';
 import { sounds } from '../layout/SoundEffects';
 import { getAssetUrl } from '../../utils/assets';
+import { ProjectVisualExplainer } from './ProjectVisualExplainer';
 
 interface CaseStudyViewProps {
   project: Project;
@@ -361,6 +362,9 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({ project, onBack, o
               <p className="text-zinc-700 leading-relaxed text-[15px]">
                 {project.finalProduct.description}
               </p>
+
+              {/* Interactive In-Page Visual Explainer */}
+              <ProjectVisualExplainer projectId={project.id} showcaseUrl={project.showcaseUrl} />
 
               <div className="space-y-4 pt-2">
                 {project.finalProduct.highlights.map((highlight, idx) => (
