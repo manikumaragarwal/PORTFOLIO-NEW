@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manish Agarwal - Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: letter;
+      margin: 0;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #09090b;
+      color: #f4f4f5;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 2.2rem 2.5rem;
+      min-height: 100vh;
+      font-size: 11px;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .window {
+      background: #09090b;
+      border: 1px solid #27272a;
+      border-radius: 8px;
+      padding: 1.5rem;
+      position: relative;
+    }
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #27272a;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .dots {
+      display: flex;
+      gap: 6px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-r { background: #ef4444; }
+    .dot-y { background: #f59e0b; }
+    .dot-g { background: #10b981; }
+    
+    .prompt {
+      color: #71717a;
+      font-size: 10px;
+    }
+    .cmd {
+      color: #34d399;
+      font-weight: 600;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px dashed #27272a;
+    }
+    .name-block h1 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+    .name-block p {
+      color: #a78bfa;
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .contact-block {
+      text-align: right;
+      font-size: 9.5px;
+      color: #a1a1aa;
+      line-height: 1.6;
+    }
+    .contact-block a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    .section {
+      margin-bottom: 1.2rem;
+    }
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #27272a;
+    }
+
+    .summary-box {
+      background: rgba(24, 24, 27, 0.7);
+      border-left: 3px solid #38bdf8;
+      padding: 0.65rem 0.85rem;
+      color: #d4d4d8;
+      font-size: 10.5px;
+      line-height: 1.55;
+      margin-bottom: 0.5rem;
+    }
+
+    .item {
+      margin-bottom: 0.85rem;
+    }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 11px;
+      font-weight: 700;
+      color: #f4f4f5;
+    }
+    .item-sub {
+      display: flex;
+      justify-content: space-between;
+      font-size: 9.5px;
+      color: #a78bfa;
+      margin-top: 1px;
+      margin-bottom: 0.3rem;
+    }
+    .item-bullets {
+      list-style: none;
+      padding-left: 0;
+      font-size: 10px;
+      color: #d4d4d8;
+      line-height: 1.5;
+    }
+    .item-bullets li {
+      position: relative;
+      padding-left: 12px;
+      margin-bottom: 2px;
+    }
+    .item-bullets li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      color: #34d399;
+      font-weight: bold;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      background: rgba(24, 24, 27, 0.5);
+      border: 1px solid #27272a;
+      padding: 0.75rem;
+      border-radius: 6px;
+    }
+    .skill-cat {
+      font-size: 10px;
+    }
+    .skill-cat strong {
+      color: #fbbf24;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .skill-cat span {
+      color: #a1a1aa;
+      font-size: 9.5px;
+    }
+
+    .tag-pill {
+      display: inline-block;
+      padding: 1px 5px;
+      border-radius: 3px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #38bdf8;
+      font-size: 8.5px;
+      margin-left: 6px;
+      font-weight: normal;
+    }
+  </style>
+</head>
+<body>
+  <div class="window">
+    <div class="top-bar">
+      <div class="dots">
+        <span class="dot dot-r"></span>
+        <span class="dot dot-y"></span>
+        <span class="dot dot-g"></span>
+      </div>
+      <div class="prompt">manish@archbox:~/resume $ <span class="cmd">cat resume.tui</span></div>
+      <div style="font-size: 9px; color: #52525b;">UTF-8 · 2026</div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="header">
+      <div class="name-block">
+        <h1>MANISH AGARWAL</h1>
+        <p>CONTENT SYSTEMS BUILDER & AI PROTOTYPER</p>
+      </div>
+      <div class="contact-block">
+        <div>Email: <a href="mailto:manishpshyco1969@gmail.com">manishpshyco1969@gmail.com</a></div>
+        <div>GitHub: <a href="https://github.com/manikumaragarwal">github.com/manikumaragarwal</a></div>
+        <div>Instagram: <a href="https://instagram.com/youngdumbandnotbroke">@youngdumbandnotbroke</a></div>
+        <div>Location: India · Portfolio: <a href="https://manikumaragarwal.github.io/PORTFOLIO-NEW/">live-web</a></div>
+      </div>
+    </header>
+
+    <!-- 01: Core Focus -->
+    <section class="section">
+      <div class="section-title">01 // CORE_FOCUS</div>
+      <div class="summary-box">
+        21-year-old English Literature student studying the mechanics of attention: why people stop scrolling, why they keep watching, and how AI can act as the infrastructure to make creating and distributing content repeatable without losing the creator's authentic voice.
+      </div>
+    </section>
+
+    <!-- 02: Systems & Experience -->
+    <section class="section">
+      <div class="section-title">02 // BUILT_SYSTEMS_AND_PROJECTS</div>
+
+      <div class="item">
+        <div class="item-header">
+          <span>WhatsApp AI Automation (28 Degree Salon)</span>
+          <span class="tag-pill">PRODUCTION SHIPPED</span>
+        </div>
+        <div class="item-sub">
+          <span>Node.js · WhatsApp Cloud API · Webhooks · Conversational Logic</span>
+          <span>Delhi, India · 2026</span>
+        </div>
+        <ul class="item-bullets">
+          <li>Architected and shipped an autonomous WhatsApp booking and inquiry system for a multi-branch salon chain in one night (~14h turnaround).</li>
+          <li>Engineered deterministic state-machine flows eliminating booking hallucinations and pricing errors with &lt;2s response latency.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span>Content Intelligence & Obsidian Second Brain</span>
+          <span class="tag-pill">ACTIVE PIPELINE</span>
+        </div>
+        <div class="item-sub">
+          <span>Python · Whisper AI · Obsidian API · Knowledge Graphs</span>
+          <span>2025 – Present</span>
+        </div>
+        <ul class="item-bullets">
+          <li>Built structured CLI ingestion pipeline converting 500+ analyzed short-form Reels into transcribed, parsed knowledge nodes inside Obsidian.</li>
+          <li>Created Creator Skill Files extracting sentence cadence length, vocabulary fingerprints, and retention vector triggers.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span>Programmable Video Pipeline</span>
+          <span class="tag-pill">EXPERIMENTAL</span>
+        </div>
+        <div class="item-sub">
+          <span>Claude Code CLI · Remotion · React · FFmpeg</span>
+          <span>2026</span>
+        </div>
+        <ul class="item-bullets">
+          <li>Developed terminal-driven video editing workflows converting transcripts into animated kinetic split-captions (Daniel Dalen style) at 60 FPS.</li>
+          <li>Automated word timestamp syncing and headless video rendering directly via code, eliminating manual timeline dragging.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span>Voice Enhancement Audio Pipeline</span>
+          <span class="tag-pill">CLI TOOL</span>
+        </div>
+        <div class="item-sub">
+          <span>Python · FFmpeg · Spectral Subtraction · Audio Processing</span>
+          <span>2026</span>
+        </div>
+        <ul class="item-bullets">
+          <li>Built 1-command audio cleanup utility executing ambient noise subtraction and vocal formant presence EQ boost (1.5kHz–4kHz).</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <span>Vibritt Web Agency</span>
+          <span class="tag-pill">FOUNDER</span>
+        </div>
+        <div class="item-sub">
+          <span>Next.js · TypeScript · Motion Design · Typography</span>
+          <span>2025 – Present</span>
+        </div>
+        <ul class="item-bullets">
+          <li>Founded boutique digital agency crafting high-engagement web experiences focused on micro-animations and typography.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 03: Education -->
+    <section class="section">
+      <div class="section-title">03 // EDUCATION</div>
+      <div class="item">
+        <div class="item-header">
+          <span>Bachelor of Arts in English Literature</span>
+          <span style="font-size: 10px; color: #a1a1aa; font-weight: normal;">2023 – 2026</span>
+        </div>
+        <div class="item-sub">
+          <span>Narrative Theory, Rhetoric, Linguistic Cadence & Audience Psychology</span>
+          <span>India</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04: Technical Toolbox -->
+    <section class="section">
+      <div class="section-title">04 // TECHNICAL_TOOLBOX</div>
+      <div class="skills-grid">
+        <div class="skill-cat">
+          <strong>LANGUAGES & FRONTEND</strong>
+          <span>Python, TypeScript, JavaScript, React, Next.js, HTML5, CSS3, Tailwind CSS</span>
+        </div>
+        <div class="skill-cat">
+          <strong>SYSTEMS & AUDIO/VIDEO</strong>
+          <span>Remotion (React Video), FFmpeg, Whisper AI, Node.js, Web Audio API, Webhooks</span>
+        </div>
+        <div class="skill-cat">
+          <strong>AI & WORKFLOWS</strong>
+          <span>Claude Code, Prompt Architecture, Obsidian Knowledge Graphs, Voice Modeling</span>
+        </div>
+        <div class="skill-cat">
+          <strong>ENVIRONMENT & TOOLING</strong>
+          <span>Linux Mint, i3wm, Neovim, Git/GitHub, Bash Scripting, Vercel</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
