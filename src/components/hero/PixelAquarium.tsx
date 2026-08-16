@@ -340,7 +340,7 @@ export const PixelAquarium: React.FC = () => {
         className="w-full h-full block"
       />
 
-      {/* FEED ME HUD button matching Cindy Ly original */}
+      {/* FEED ME HUD button */}
       <div className="absolute bottom-2 inset-x-0 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 pointer-events-none">
         <button
           onClick={handleFeed}

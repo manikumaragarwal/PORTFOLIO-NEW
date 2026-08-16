@@ -9,6 +9,7 @@ import { CaseStudyView } from './components/works/CaseStudyView';
 import { SidequestsCanvas } from './components/sidequests/SidequestsCanvas';
 import { ProfileSection } from './components/profile/ProfileSection';
 import { BlogSection } from './components/blog/BlogSection';
+import { PROFILE_INFO } from './data/profile';
 import { Check } from 'lucide-react';
 
 export function App() {
@@ -71,7 +72,7 @@ export function App() {
         {/* Top Header */}
         <Header
           onNavigateHome={() => handleSelectSection('works')}
-          onCopyEmailToast={() => triggerToast('cindyly.design@gmail.com copied! 📬')}
+          onCopyEmailToast={() => triggerToast(`${PROFILE_INFO.email} copied! 📬`)}
         />
 
         {/* Dynamic Main View with AnimatePresence */}
