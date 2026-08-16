@@ -348,16 +348,18 @@ export const MacOSWindow: React.FC<MacOSWindowProps> = ({
             </div>
             {/* Live Animated Screen Recording */}
             <div className="w-full aspect-[16/10] bg-zinc-950 overflow-hidden">
-              {item.windowContent.previewMedia.src.endsWith('.mp4') ? (
+              {(item.windowContent.previewMedia.src.endsWith('.mp4') || item.windowContent.previewMedia.src.endsWith('.webm')) ? (
                 <video
-                  src={getAssetUrl(item.windowContent.previewMedia.src)}
-                  poster={getAssetUrl(item.windowContent.previewMedia.src.replace('.mp4', '_poster.jpg'))}
                   autoPlay
                   muted
                   loop
                   playsInline
+                  poster={getAssetUrl(item.windowContent.previewMedia.src.replace(/\.(mp4|webm)$/, '_poster.webp'))}
                   className="w-full h-full object-cover object-top"
-                />
+                >
+                  <source src={getAssetUrl(item.windowContent.previewMedia.src.replace(/\.(mp4|webm)$/, '.webm'))} type="video/webm" />
+                  <source src={getAssetUrl(item.windowContent.previewMedia.src.replace(/\.(mp4|webm)$/, '.mp4'))} type="video/mp4" />
+                </video>
               ) : (
                 <img
                   src={getAssetUrl(item.windowContent.previewMedia.src)}

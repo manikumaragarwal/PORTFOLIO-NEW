@@ -106,16 +106,18 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({ project, onBack, o
         
         {/* Hero Visual Mockup Banner */}
         <div className="w-full aspect-[21/10] max-h-[460px] bg-zinc-950 rounded-2xl overflow-hidden shadow-xl border border-black/10 relative mb-10">
-          {project.heroImage.endsWith('.mp4') ? (
+          {(project.heroImage.endsWith('.mp4') || project.heroImage.endsWith('.webm')) ? (
             <video
-              src={getAssetUrl(project.heroImage)}
-              poster={getAssetUrl(project.heroImage.replace('.mp4', '_poster.jpg'))}
               autoPlay
               muted
               loop
               playsInline
+              poster={getAssetUrl(project.heroImage.replace(/\.(mp4|webm)$/, '_poster.webp'))}
               className="w-full h-full object-cover object-top"
-            />
+            >
+              <source src={getAssetUrl(project.heroImage.replace(/\.(mp4|webm)$/, '.webm'))} type="video/webm" />
+              <source src={getAssetUrl(project.heroImage.replace(/\.(mp4|webm)$/, '.mp4'))} type="video/mp4" />
+            </video>
           ) : (
             <img
               src={getAssetUrl(project.heroImage)}

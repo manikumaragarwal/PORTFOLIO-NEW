@@ -10,7 +10,7 @@ export interface ProfileGalleryPhoto {
 export const PROFILE_PHOTOS: ProfileGalleryPhoto[] = [
   {
     id: 'photo-1',
-    src: '/images/manish_main_profile.jpg',
+    src: '/images/manish_main_profile.webp',
     alt: 'Manish Agarwal Portrait',
     caption: '',
     location: 'India',
@@ -18,7 +18,7 @@ export const PROFILE_PHOTOS: ProfileGalleryPhoto[] = [
   },
   {
     id: 'photo-2',
-    src: '/images/manish_gallery_1.jpg',
+    src: '/images/manish_gallery_1.webp',
     alt: 'Manish Agarwal',
     caption: '',
     location: 'India',
@@ -26,7 +26,7 @@ export const PROFILE_PHOTOS: ProfileGalleryPhoto[] = [
   },
   {
     id: 'photo-3',
-    src: '/images/manish_gallery_2.jpg',
+    src: '/images/manish_gallery_2.webp',
     alt: 'Manish Agarwal',
     caption: '',
     location: 'India',
@@ -34,7 +34,7 @@ export const PROFILE_PHOTOS: ProfileGalleryPhoto[] = [
   },
   {
     id: 'photo-4',
-    src: '/images/manish_gallery_3.jpg',
+    src: '/images/manish_gallery_3.webp',
     alt: 'Manish Agarwal',
     caption: '',
     location: 'India',
