@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SidequestItem } from '../../types';
 import { SIDEQUEST_ITEMS } from '../../data/sidequests';
@@ -14,6 +14,17 @@ export const SidequestsCanvas: React.FC = () => {
   const [openWindows, setOpenWindows] = useState<{ item: SidequestItem; zIndex: number }[]>([]);
   const [topZIndex, setTopZIndex] = useState(100);
   const [hasMoved, setHasMoved] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile viewport
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleOpenWindow = (item: SidequestItem) => {
     const exists = openWindows.find(w => w.item.id === item.id);
@@ -62,119 +73,145 @@ export const SidequestsCanvas: React.FC = () => {
     setHasMoved(false);
   };
 
+  const appItems = items.filter(item => item.type === 'app' || item.type === 'file' || item.type === '3d' || item.type === 'pdf');
+  const noteItems = items.filter(item => item.type === 'note');
+  const stickerItems = items.filter(item => item.type === 'sticker');
+
   return (
     <section className="relative w-full min-h-[calc(100vh-140px)] overflow-hidden select-none pb-28">
       
-      {/* Top Left: Sticker Pack Drawer */}
-      <StickerPackDrawer onSpawnSticker={handleSpawnSticker} />
+      {/* Top Bar: Sticker Pack Drawer & Reset Button */}
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-4 pb-2 flex items-center justify-between relative z-30">
+        <StickerPackDrawer onSpawnSticker={handleSpawnSticker} />
 
-      {/* Top Right: Dynamic Hint & Reset Button */}
-      <div className="absolute top-6 right-8 z-20 flex items-center min-h-[36px]">
-        <AnimatePresence mode="wait">
-          {!hasMoved ? (
-            /* Subtle Blinking Hint */
-            <motion.div
-              key="drag-hint"
-              initial={{ opacity: 0, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 10 }}
-              transition={{ duration: 0.25 }}
-              className="flex items-center gap-1.5 text-xs text-zinc-400/90 font-display-serif italic select-none pointer-events-none animate-[pulse_2.8s_ease-in-out_infinite]"
-            >
-              <span>psst... try dragging things</span>
-              <span className="text-zinc-400 font-mono not-italic text-[11px]">✦</span>
-            </motion.div>
-          ) : (
-            /* Popping Reset Button with darker background & lighter text */
-            <motion.button
-              key="reset-button"
-              initial={{ opacity: 0, scale: 0.85, y: -4 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.85, y: -4 }}
-              transition={{ type: 'spring', stiffness: 450, damping: 26 }}
-              onClick={handleResetBoard}
-              title="Reset stickers and board layout"
-              className="px-3.5 py-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-100 border border-zinc-700/80 shadow-md transition-all duration-150 hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-1.5 text-xs font-mono font-medium"
-            >
-              <RotateCcw className="w-3.5 h-3.5 text-zinc-300" />
-              <span>Reset</span>
-            </motion.button>
-          )}
-        </AnimatePresence>
+        {/* Top Right: Dynamic Hint or Reset Button */}
+        <div className="flex items-center min-h-[36px]">
+          <AnimatePresence mode="wait">
+            {!hasMoved ? (
+              <motion.div
+                key="drag-hint"
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 10 }}
+                transition={{ duration: 0.25 }}
+                className="flex items-center gap-1.5 text-xs text-zinc-400 font-display-serif italic select-none pointer-events-none"
+              >
+                <span>{isMobile ? 'tap any item to explore' : 'psst... try dragging things'}</span>
+                <span className="text-zinc-400 font-mono not-italic text-[11px]">✦</span>
+              </motion.div>
+            ) : (
+              <motion.button
+                key="reset-button"
+                initial={{ opacity: 0, scale: 0.85, y: -4 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.85, y: -4 }}
+                transition={{ type: 'spring', stiffness: 450, damping: 26 }}
+                onClick={handleResetBoard}
+                title="Reset stickers and board layout"
+                className="px-3 py-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-100 border border-zinc-700/80 shadow-md transition-all duration-150 hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-1.5 text-xs font-mono font-medium"
+              >
+                <RotateCcw className="w-3.5 h-3.5 text-zinc-300" />
+                <span>Reset</span>
+              </motion.button>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
 
-      {/* Interactive Draggable Stickers & Desktop File Items */}
-      <div key={boardKey} className="relative w-full h-[940px] sm:h-[760px] max-w-7xl mx-auto">
-        {items.map((item) => {
-          const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+      {/* Main Content: Mobile Docked View vs Desktop Freeform Draggable Canvas */}
+      {isMobile ? (
+        /* Mobile Docked Layout */
+        <div key={boardKey} className="w-full max-w-xl mx-auto px-4 py-4 space-y-6">
           
-          let mobileX = item.initialX;
-          let mobileY = item.initialY;
-          let mobileWidth = item.width;
+          {/* 1. Docked Web Apps & Tools Grid */}
+          <div className="bg-white/90 backdrop-blur-md rounded-2xl border border-black/8 p-4 sm:p-5 shadow-xs space-y-3">
+            <div className="flex items-center justify-between text-xs font-mono text-zinc-400 border-b border-black/5 pb-2">
+              <span className="font-semibold text-zinc-700 uppercase tracking-wider">Docked Apps & Tools</span>
+              <span className="text-[10px] text-zinc-400">{appItems.length} items</span>
+            </div>
 
-          if (isMobile) {
-            const screenW = window.innerWidth;
-            if (item.id === 'vibritt-scroll-stopper') {
-              mobileX = Math.max(12, screenW * 0.05);
-              mobileY = 35;
-            } else if (item.id === 'dark-grimoiri-web') {
-              mobileX = Math.max(115, screenW * 0.38);
-              mobileY = 35;
-            } else if (item.id === 'ptlss-college-app') {
-              mobileX = Math.max(220, screenW * 0.70);
-              mobileY = 35;
-            } else if (item.id === 'postit-content-dna') {
-              mobileX = 14;
-              mobileY = 160;
-              mobileWidth = Math.min(320, screenW - 28);
-            } else if (item.id === 'postit-attention-note') {
-              mobileX = 14;
-              mobileY = 485;
-              mobileWidth = Math.min(320, screenW - 28);
-            } else if (item.id === 'tapioca-stickers') {
-              mobileX = Math.max(20, (screenW - 140) / 2);
-              mobileY = 790;
-            }
-          }
+            <div className="grid grid-cols-3 gap-y-4 gap-x-2 pt-2">
+              {appItems.map(item => (
+                <div key={item.id} className="flex justify-center">
+                  <DraggableSticker
+                    item={item}
+                    docked={true}
+                    onClick={() => handleOpenWindow(item)}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
 
-          const resolvedItem = isMobile ? {
-            ...item,
-            initialX: mobileX,
-            initialY: mobileY,
-            width: mobileWidth
-          } : item;
+          {/* 2. Docked Content DNA Memos & Beliefs */}
+          <div className="space-y-3.5">
+            <div className="flex items-center justify-between text-xs font-mono text-zinc-400 px-1">
+              <span className="font-semibold text-zinc-700 uppercase tracking-wider">Content DNA & Notes</span>
+              <span className="text-[10px] text-zinc-400">Tap to expand</span>
+            </div>
 
-          return (
+            <div className="space-y-4">
+              {noteItems.map(item => (
+                <DraggableSticker
+                  key={item.id}
+                  item={item}
+                  docked={true}
+                  onClick={() => handleOpenWindow(item)}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* 3. Spawned Stickers Tray */}
+          {stickerItems.length > 0 && (
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+              {stickerItems.map(item => (
+                <div key={item.id} className="w-24">
+                  <DraggableSticker
+                    item={item}
+                    docked={true}
+                    onClick={() => handleOpenWindow(item)}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ) : (
+        /* Desktop Freeform Draggable Canvas */
+        <div key={boardKey} className="relative w-full h-[820px] max-w-7xl mx-auto">
+          {items.map((item) => (
             <DraggableSticker
               key={item.id}
-              item={resolvedItem}
+              item={item}
+              docked={false}
               onClick={() => handleOpenWindow(item)}
+              onMove={handleItemMoved}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* macOS Open Windows Stacking Layer */}
+      <AnimatePresence>
+        {openWindows.map((win, idx) => {
+          const initX = 120 + (idx % 4) * 40;
+          const initY = 80 + (idx % 4) * 40;
+          return (
+            <MacOSWindow
+              key={win.item.id}
+              item={win.item}
+              zIndex={win.zIndex}
+              initialX={initX}
+              initialY={initY}
+              isMobile={isMobile}
+              onClose={() => handleCloseWindow(win.item.id)}
+              onFocus={() => handleFocusWindow(win.item.id)}
               onMove={handleItemMoved}
             />
           );
         })}
-
-        {/* macOS Open Windows Stacking Layer */}
-        <AnimatePresence>
-          {openWindows.map((win, idx) => {
-            const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
-            const initX = isMobile ? Math.max(8, (window.innerWidth - 360) / 2) : 120 + (idx % 4) * 40;
-            const initY = isMobile ? 40 + idx * 15 : 80 + (idx % 4) * 40;
-            return (
-              <MacOSWindow
-                key={win.item.id}
-                item={win.item}
-                zIndex={win.zIndex}
-                initialX={initX}
-                initialY={initY}
-                onClose={() => handleCloseWindow(win.item.id)}
-                onFocus={() => handleFocusWindow(win.item.id)}
-                onMove={handleItemMoved}
-              />
-            );
-          })}
-        </AnimatePresence>
-      </div>
+      </AnimatePresence>
 
     </section>
   );

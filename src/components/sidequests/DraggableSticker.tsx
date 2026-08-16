@@ -9,47 +9,51 @@ interface DraggableStickerProps {
   item: SidequestItem;
   onClick: () => void;
   onMove?: () => void;
+  docked?: boolean;
 }
 
-export const DraggableSticker: React.FC<DraggableStickerProps> = ({ item, onClick, onMove }) => {
+export const DraggableSticker: React.FC<DraggableStickerProps> = ({ item, onClick, onMove, docked = false }) => {
   return (
     <motion.div
-      drag
-      dragMomentum={true}
+      drag={!docked}
+      dragMomentum={!docked}
       dragElastic={0.12}
       dragTransition={{ bounceStiffness: 300, bounceDamping: 20 }}
-      whileHover={{ scale: 1.04 }}
-      whileDrag={{ scale: 1.08, rotate: (item.rotation || 0) + 4, zIndex: 60 }}
+      whileHover={{ scale: docked ? 1.02 : 1.04 }}
+      whileTap={{ scale: 0.98 }}
+      whileDrag={docked ? undefined : { scale: 1.08, rotate: (item.rotation || 0) + 4, zIndex: 60 }}
       onDragStart={() => {
-        sounds.click();
-        onMove?.();
+        if (!docked) {
+          sounds.click();
+          onMove?.();
+        }
       }}
-      onDragEnd={() => sounds.stickerSnap()}
+      onDragEnd={() => !docked && sounds.stickerSnap()}
       onClick={(e) => {
         e.stopPropagation();
         sounds.windowOpen();
         onClick();
       }}
-      initial={{ 
+      initial={docked ? { opacity: 0, y: 12 } : { 
         x: item.initialX, 
         y: item.initialY, 
         rotate: item.rotation || 0,
         opacity: 0,
         scale: 0.85
       }}
-      animate={{ 
+      animate={docked ? { opacity: 1, y: 0 } : { 
         opacity: 1, 
         scale: 1,
         rotate: item.rotation || 0 
       }}
       transition={{ type: 'spring', stiffness: 350, damping: 25 }}
       style={{
-        position: 'absolute',
-        width: item.width ? `${item.width}px` : undefined,
-        cursor: 'grab'
+        position: docked ? 'relative' : 'absolute',
+        width: docked ? '100%' : (item.width ? `${item.width}px` : undefined),
+        cursor: docked ? 'pointer' : 'grab'
       }}
       data-sticker-item="true"
-      className="select-none z-20 active:cursor-grabbing"
+      className={`select-none ${docked ? 'z-10 cursor-pointer' : 'z-20 active:cursor-grabbing'}`}
     >
       {/* 1. Post-it Note Type */}
       {item.type === 'note' && (

@@ -15,6 +15,7 @@ interface MacOSWindowProps {
   zIndex: number;
   initialX?: number;
   initialY?: number;
+  isMobile?: boolean;
 }
 
 export const MacOSWindow: React.FC<MacOSWindowProps> = ({
@@ -24,7 +25,8 @@ export const MacOSWindow: React.FC<MacOSWindowProps> = ({
   onMove,
   zIndex,
   initialX = 160,
-  initialY = 120
+  initialY = 120,
+  isMobile = false
 }) => {
   const windowRef = useRef<HTMLDivElement>(null);
   const dragControls = useDragControls();
@@ -93,51 +95,76 @@ export const MacOSWindow: React.FC<MacOSWindowProps> = ({
   };
 
   return (
-    <motion.div
-      ref={windowRef}
-      drag
-      dragControls={dragControls}
-      dragListener={false}
-      dragMomentum={false}
-      dragElastic={0.05}
-      initial={{ x: initialX, y: initialY, scale: 0.92, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      exit={{ scale: 0.92, opacity: 0 }}
-      transition={{ type: 'spring', stiffness: 380, damping: 26 }}
-      onPointerDown={onFocus}
-      onDragStart={() => {
-        sounds.click();
-        onFocus();
-        onMove?.();
-      }}
-      onDragEnd={() => sounds.stickerSnap()}
-      style={{
-        zIndex,
-        position: 'absolute',
-        top: 0,
-        left: 0
-      }}
-      className="w-[92vw] sm:w-[480px] md:w-[540px] max-w-[540px] mac-window bg-white shadow-2xl flex flex-col select-none"
-    >
-      {/* Window Header - Draggable handle */}
-      <div
-        onPointerDown={(e) => {
-          if ((e.target as HTMLElement).closest('button')) return;
-          dragControls.start(e);
-          onFocus();
+    <>
+      {isMobile && (
+        <div
+          onClick={() => {
+            sounds.click();
+            onClose();
+          }}
+          className="fixed inset-0 bg-black/40 backdrop-blur-xs z-40 transition-opacity"
+        />
+      )}
+      <motion.div
+        ref={windowRef}
+        drag={!isMobile}
+        dragControls={isMobile ? undefined : dragControls}
+        dragListener={false}
+        dragMomentum={false}
+        dragElastic={0.05}
+        initial={isMobile ? { scale: 0.94, opacity: 0, y: 20 } : { x: initialX, y: initialY, scale: 0.92, opacity: 0 }}
+        animate={isMobile ? { scale: 1, opacity: 1, y: 0 } : { scale: 1, opacity: 1 }}
+        exit={isMobile ? { scale: 0.94, opacity: 0, y: 20 } : { scale: 0.92, opacity: 0 }}
+        transition={{ type: 'spring', stiffness: 380, damping: 26 }}
+        onPointerDown={onFocus}
+        onDragStart={() => {
+          if (!isMobile) {
+            sounds.click();
+            onFocus();
+            onMove?.();
+          }
         }}
-        className="mac-window-header px-4 py-2.5 flex items-center justify-between border-b border-black/10 cursor-grab active:cursor-grabbing select-none"
+        onDragEnd={() => !isMobile && sounds.stickerSnap()}
+        style={isMobile ? {
+          zIndex: Math.max(zIndex, 50),
+          position: 'fixed',
+          top: '12%',
+          left: '4%',
+          right: '4%',
+          margin: '0 auto',
+          maxHeight: '80vh'
+        } : {
+          zIndex,
+          position: 'absolute',
+          top: 0,
+          left: 0
+        }}
+        className={`w-[92vw] sm:w-[480px] md:w-[540px] max-w-[540px] mac-window bg-white shadow-2xl flex flex-col select-none ${
+          isMobile ? 'rounded-2xl border border-black/15' : ''
+        }`}
       >
-        <TrafficLights onClose={onClose} />
-        
-        {/* Title */}
-        <div className="text-xs font-mono font-medium text-zinc-600 truncate max-w-[240px] flex items-center gap-1.5 pointer-events-none">
-          <span className="text-zinc-400">❖</span>
-          <span>{item.fileName}</span>
-        </div>
+        {/* Window Header - Draggable handle on desktop, static on mobile */}
+        <div
+          onPointerDown={(e) => {
+            if (isMobile) return;
+            if ((e.target as HTMLElement).closest('button')) return;
+            dragControls.start(e);
+            onFocus();
+          }}
+          className={`mac-window-header px-4 py-2.5 flex items-center justify-between border-b border-black/10 select-none ${
+            isMobile ? 'cursor-default' : 'cursor-grab active:cursor-grabbing'
+          }`}
+        >
+          <TrafficLights onClose={onClose} />
+          
+          {/* Title */}
+          <div className="text-xs font-mono font-medium text-zinc-600 truncate max-w-[240px] flex items-center gap-1.5 pointer-events-none">
+            <span className="text-zinc-400">❖</span>
+            <span>{item.fileName}</span>
+          </div>
 
-        <div className="w-12 pointer-events-none"></div>
-      </div>
+          <div className="w-12 pointer-events-none"></div>
+        </div>
 
       {/* Window Content */}
       <div className="p-5 sm:p-6 overflow-y-auto max-h-[70vh] space-y-5 text-zinc-800 text-sm cursor-auto">
@@ -397,7 +424,7 @@ export const MacOSWindow: React.FC<MacOSWindowProps> = ({
 
       {/* Window Footer */}
       <div className="px-5 py-2.5 bg-zinc-50 border-t border-zinc-100 flex justify-between items-center text-[10px] font-mono text-zinc-400">
-        <span>macOS Preview • Click header to drag</span>
+        <span>{isMobile ? 'Tap close or outside to dismiss' : 'macOS Preview • Click header to drag'}</span>
         <button
           onClick={onClose}
           className="hover:text-zinc-800 transition cursor-pointer"
@@ -406,5 +433,6 @@ export const MacOSWindow: React.FC<MacOSWindowProps> = ({
         </button>
       </div>
     </motion.div>
+    </>
   );
 };
