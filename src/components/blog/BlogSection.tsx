@@ -28,7 +28,7 @@ export const BlogSection: React.FC = () => {
   }
 
   return (
-    <section className="w-full max-w-5xl mx-auto px-4 sm:px-8 md:px-10 py-6 sm:py-10 pb-32 select-none">
+    <section className="w-full max-w-5xl mx-auto px-4 sm:px-8 md:px-10 py-6 sm:py-10 pb-48 sm:pb-52 select-none">
       
       {/* Section Title & Subtitle */}
       <div className="space-y-3 mb-8">

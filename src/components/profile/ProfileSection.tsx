@@ -9,7 +9,7 @@ interface ProfileSectionProps {
 
 export const ProfileSection: React.FC<ProfileSectionProps> = ({ onCopyToast }) => {
   return (
-    <section className="w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-10 py-6 sm:py-10 pb-32 select-none">
+    <section className="w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-10 py-6 sm:py-10 pb-48 sm:pb-52 select-none">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
         
         {/* Left Column: macOS Photo Album Window (5 cols) */}

@@ -48,7 +48,7 @@ export const ArticleReader: React.FC<ArticleReaderProps> = ({ post, onBack }) =>
   };
 
   return (
-    <article className="w-full min-h-screen pb-32 pt-6 select-text">
+    <article className="w-full min-h-screen pb-48 sm:pb-52 pt-6 select-text">
       
       {/* Top Reading Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-zinc-200/60 z-50">

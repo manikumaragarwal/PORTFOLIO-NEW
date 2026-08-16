@@ -78,7 +78,7 @@ export const SidequestsCanvas: React.FC = () => {
   const stickerItems = items.filter(item => item.type === 'sticker');
 
   return (
-    <section className="relative w-full min-h-[calc(100vh-140px)] overflow-hidden select-none pb-28">
+    <section className="relative w-full min-h-[calc(100vh-140px)] overflow-hidden select-none pb-48 sm:pb-52">
       
       {/* Top Bar: Sticker Pack Drawer & Reset Button */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-4 pb-2 flex items-center justify-between relative z-30">

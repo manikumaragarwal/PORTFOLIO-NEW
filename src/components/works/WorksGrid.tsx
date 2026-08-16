@@ -12,7 +12,7 @@ interface WorksGridProps {
 
 export const WorksGrid: React.FC<WorksGridProps> = ({ onSelectProject }) => {
   return (
-    <section id="works-section" className="w-full max-w-6xl mx-auto px-4 sm:px-8 md:px-10 py-6 sm:py-10 pb-32 select-none">
+    <section id="works-section" className="w-full max-w-6xl mx-auto px-4 sm:px-8 md:px-10 py-6 sm:py-10 pb-48 sm:pb-52 select-none">
       {/* Works 2x2 Showcase Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
         {PROJECTS.map((project, idx) => (

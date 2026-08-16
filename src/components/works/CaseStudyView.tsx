@@ -85,7 +85,7 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({ project, onBack, o
   const nextProject = currentIndex < PROJECTS.length - 1 ? PROJECTS[currentIndex + 1] : PROJECTS[0];
 
   return (
-    <div className="w-full min-h-screen pb-32 pt-4 select-text">
+    <div className="w-full min-h-screen pb-48 sm:pb-52 pt-4 select-text">
       
       {/* Top Floating Back Bar */}
       <div className="sticky top-4 z-30 max-w-6xl mx-auto px-6 flex items-center justify-between pointer-events-none mb-6">
