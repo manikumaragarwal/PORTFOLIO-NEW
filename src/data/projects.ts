@@ -12,8 +12,8 @@ export const PROJECTS: Project[] = [
       text: 'BUILDING',
       type: 'building'
     },
-    previewImage: '/images/reel_obsidian_pipeline.mp4',
-    heroImage: '/images/reel_obsidian_pipeline.mp4',
+    previewImage: '/images/reel_obsidian_pipeline.webm',
+    heroImage: '/images/reel_obsidian_pipeline.webm',
     githubUrl: 'https://github.com/manikumaragarwal/REEL-Knowledge-System',
     showcaseUrl: '/showcases/reel-second-brain.html',
     tags: ['Content Intelligence', 'Obsidian', 'Knowledge Graph', 'Python'],
@@ -109,8 +109,8 @@ export const PROJECTS: Project[] = [
       text: 'SHIPPED',
       type: 'shipped'
     },
-    previewImage: '/images/creator_skill_files.mp4',
-    heroImage: '/images/creator_skill_files.mp4',
+    previewImage: '/images/creator_skill_files.webm',
+    heroImage: '/images/creator_skill_files.webm',
     githubUrl: 'https://github.com/manikumaragarwal/OBSIDIAN-NOTES',
     showcaseUrl: '/showcases/creator-skill-files.html',
     tags: ['Prompt Engineering', 'Voice Patterns', 'Content Analysis', 'Creator Systems'],
@@ -206,8 +206,8 @@ export const PROJECTS: Project[] = [
       text: 'EXPERIMENTAL',
       type: 'building'
     },
-    previewImage: '/images/ai_editing_pipeline.mp4',
-    heroImage: '/images/ai_editing_pipeline.mp4',
+    previewImage: '/images/ai_editing_pipeline.webm',
+    heroImage: '/images/ai_editing_pipeline.webm',
     githubUrl: 'https://github.com/manikumaragarwal/subtitle-generation-pipeline',
     showcaseUrl: '/showcases/ai-editing-pipeline.html',
     tags: ['Claude Code', 'Remotion', 'React Video', 'Programmable Motion'],
@@ -296,8 +296,8 @@ export const PROJECTS: Project[] = [
       text: 'SHIPPED',
       type: 'shipped'
     },
-    previewImage: '/images/salon_preview.mp4',
-    heroImage: '/images/salon_preview.mp4',
+    previewImage: '/images/salon_preview.webm',
+    heroImage: '/images/salon_preview.webm',
     githubUrl: 'https://github.com/manikumaragarwal/28-degree-salon',
     liveUrl: 'https://28-degree-salon.vercel.app',
     showcaseUrl: '/showcases/28-degree-salon.html',

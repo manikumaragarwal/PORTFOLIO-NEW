@@ -66,7 +66,7 @@ export const PROFILE_INFO = {
   nowPlaying: {
     song: 'Attention Mechanics (Lo-Fi Study Mix)',
     artist: 'Focus Tape • Manish',
-    albumCover: '/images/gallery_matcha.png',
+    albumCover: '/images/gallery_matcha.webp',
     duration: '3:20'
   },
   tools: [

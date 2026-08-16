@@ -18,7 +18,7 @@ export const SIDEQUEST_ITEMS: SidequestItem[] = [
       fullStory: 'Web design should not feel like a digital brochure. At Vibritt, we focus on micro-animations, bold type, and design that makes people stop and look. That is the whole idea.',
       previewMedia: {
         type: 'image',
-        src: '/images/vibritt_preview.mp4',
+        src: '/images/vibritt_preview.webm',
         alt: 'Vibritt Agency Live Screen Recording'
       },
       tags: ['Live on Vercel', 'Web Agency', 'Motion Design', 'Typography']
@@ -41,7 +41,7 @@ export const SIDEQUEST_ITEMS: SidequestItem[] = [
       fullStory: 'Designed for Potterheads. Custom spellbook textures, gothic type, organized product categories, and a checkout flow that does not break the mood.',
       previewMedia: {
         type: 'image',
-        src: '/images/dark_grimoiri_preview.mp4',
+        src: '/images/dark_grimoiri_preview.webm',
         alt: 'Dark Grimoiri Harry Potter Merch Store Screen Recording'
       },
       tags: ['Live on Vercel', 'Harry Potter', 'Merchandise', 'E-Commerce', 'Dark UI']
@@ -64,7 +64,7 @@ export const SIDEQUEST_ITEMS: SidequestItem[] = [
       fullStory: 'Built so students, parents, and faculty can find what they need: announcements, admission info, faculty contacts, and resources. Works well on phones too.',
       previewMedia: {
         type: 'image',
-        src: '/images/ptlss_preview.mp4',
+        src: '/images/ptlss_preview.webm',
         alt: 'Pt. Laxmi Shanker Saraswati College Official Website Screen Recording'
       },
       tags: ['Live Domain (ptlssicollege.in)', 'Education', 'School Portal', 'Production Web']
