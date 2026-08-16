@@ -50,6 +50,7 @@ export const PROFILE_INFO = {
   education: 'English Literature & Digital Systems (2026)',
   previousRole: 'AI Automation @ 28 Degree (Delhi) • Short-Form Content Systems',
   socialLinks: {
+    instagram: 'https://www.instagram.com/youngdumbandnotbroke',
     linkedin: 'https://linkedin.com',
     email: 'mailto:manishpshyco1969@gmail.com',
     github: 'https://github.com/manikumaragarwal',
