@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ActiveSection } from '../../types';
 import { sounds } from './SoundEffects';
+import { getAssetUrl } from '../../utils/assets';
 
 interface DockProps {
   activeSection: ActiveSection;
@@ -66,7 +67,7 @@ export const Dock: React.FC<DockProps> = ({ activeSection, onSelectSection }) =>
       renderIcon: () => (
         <div className="w-11 h-11 rounded-2xl overflow-hidden p-0.5 bg-gradient-to-b from-sky-100 via-blue-100 to-blue-200 shadow-md relative group-hover:shadow-lg transition-all border border-blue-200/60">
           <img
-            src="/images/manish_main_profile.jpg"
+            src={getAssetUrl('/images/manish_main_profile.jpg')}
             alt="Manish Agarwal"
             className="w-full h-full object-cover rounded-xl"
           />

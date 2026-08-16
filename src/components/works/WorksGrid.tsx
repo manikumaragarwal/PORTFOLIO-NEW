@@ -4,6 +4,7 @@ import { Project } from '../../types';
 import { PROJECTS } from '../../data/projects';
 import { ArrowUpRight } from 'lucide-react';
 import { sounds } from '../layout/SoundEffects';
+import { getAssetUrl } from '../../utils/assets';
 
 interface WorksGridProps {
   onSelectProject: (project: Project) => void;
@@ -61,7 +62,7 @@ export const WorksGrid: React.FC<WorksGridProps> = ({ onSelectProject }) => {
                   </div>
                 ) : (
                   <img
-                    src={project.previewImage}
+                    src={getAssetUrl(project.previewImage)}
                     alt={project.title}
                     className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
                     loading="lazy"

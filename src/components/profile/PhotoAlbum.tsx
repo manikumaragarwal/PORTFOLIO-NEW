@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TrafficLights } from '../common/TrafficLights';
 import { PROFILE_PHOTOS, ProfileGalleryPhoto } from '../../data/profile';
 import { sounds } from '../layout/SoundEffects';
+import { getAssetUrl } from '../../utils/assets';
 
 export const PhotoAlbum: React.FC = () => {
   const [activePhoto, setActivePhoto] = useState<ProfileGalleryPhoto>(PROFILE_PHOTOS[0]);
@@ -25,7 +26,7 @@ export const PhotoAlbum: React.FC = () => {
         <div className="w-full aspect-[4/4] sm:aspect-[4/3.8] rounded-xs overflow-hidden bg-white border border-zinc-200/60 shadow-xs flex items-center justify-center relative group p-1">
           <img
             key={activePhoto.id}
-            src={activePhoto.src}
+            src={getAssetUrl(activePhoto.src)}
             alt={activePhoto.alt}
             className="w-full h-full object-contain rounded-xs transition-transform duration-300 group-hover:scale-[1.02] animate-fade-in"
           />
@@ -46,7 +47,7 @@ export const PhotoAlbum: React.FC = () => {
                 }`}
               >
                 <img
-                  src={photo.src}
+                  src={getAssetUrl(photo.src)}
                   alt={photo.alt}
                   className="w-full h-full object-contain pointer-events-none rounded-2xs"
                 />

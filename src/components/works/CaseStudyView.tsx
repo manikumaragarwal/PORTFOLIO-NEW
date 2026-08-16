@@ -3,6 +3,7 @@ import { Project } from '../../types';
 import { ArrowLeft, ArrowRight, CheckCircle2, Award, ExternalLink } from 'lucide-react';
 import { PROJECTS } from '../../data/projects';
 import { sounds } from '../layout/SoundEffects';
+import { getAssetUrl } from '../../utils/assets';
 
 interface CaseStudyViewProps {
   project: Project;
@@ -105,7 +106,7 @@ export const CaseStudyView: React.FC<CaseStudyViewProps> = ({ project, onBack, o
         {/* Hero Visual Mockup Banner */}
         <div className="w-full aspect-[21/10] max-h-[460px] bg-zinc-950 rounded-2xl overflow-hidden shadow-xl border border-black/10 relative mb-10">
           <img
-            src={project.heroImage}
+            src={getAssetUrl(project.heroImage)}
             alt={project.title}
             className="w-full h-full object-cover object-top"
           />

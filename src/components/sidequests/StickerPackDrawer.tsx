@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Plus } from 'lucide-react';
 import { sounds } from '../layout/SoundEffects';
 import { SidequestItem } from '../../types';
+import { getAssetUrl } from '../../utils/assets';
 
 interface StickerPackDrawerProps {
   onSpawnSticker: (item: SidequestItem) => void;
@@ -132,7 +133,7 @@ export const StickerPackDrawer: React.FC<StickerPackDrawerProps> = ({ onSpawnSti
                 className="w-10 h-10 rounded-xl bg-zinc-50 hover:bg-zinc-100 border border-zinc-200/80 flex items-center justify-center text-lg cursor-pointer shadow-2xs transition-colors"
               >
                 {s.type === 'note' && <span>📝</span>}
-                {s.type === '3d' && (s.image ? <img src={s.image} alt="" className="w-8 h-8 object-cover rounded-md pointer-events-none" /> : <span>🧊</span>)}
+                {s.type === '3d' && (s.image ? <img src={getAssetUrl(s.image)} alt="" className="w-8 h-8 object-cover rounded-md pointer-events-none" /> : <span>🧊</span>)}
                 {s.type === 'sticker' && <span>☕</span>}
               </motion.button>
             ))}

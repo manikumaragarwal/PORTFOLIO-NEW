@@ -5,6 +5,7 @@ import { TrafficLights } from '../common/TrafficLights';
 import { Play, Pause, Volume2, CheckCircle2, Circle, Sparkles, ExternalLink } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { sounds } from '../layout/SoundEffects';
+import { getAssetUrl } from '../../utils/assets';
 
 interface MacOSWindowProps {
   item: SidequestItem;
@@ -193,7 +194,7 @@ export const MacOSWindow: React.FC<MacOSWindowProps> = ({
           <div className="space-y-4">
             <div className="w-full aspect-[16/10] rounded-xl overflow-hidden bg-zinc-900 relative shadow-inner flex items-center justify-center p-3">
               <img
-                src={item.windowContent.previewMedia.src || '/images/lamp_3d.png'}
+                src={getAssetUrl(item.windowContent.previewMedia.src || '/images/lamp_3d.png')}
                 alt="3D Lamp"
                 style={{
                   filter: `brightness(${0.4 + (lampBrightness / 100) * 0.8}) drop-shadow(0 0 ${lampBrightness / 5}px rgba(251, 191, 36, ${lampBrightness / 100}))`
@@ -321,7 +322,7 @@ export const MacOSWindow: React.FC<MacOSWindowProps> = ({
             {/* Live Animated Screen Recording GIF */}
             <div className="w-full aspect-[16/10] bg-zinc-950 overflow-hidden">
               <img
-                src={item.windowContent.previewMedia.src}
+                src={getAssetUrl(item.windowContent.previewMedia.src)}
                 alt={item.windowContent.previewMedia.alt || item.title}
                 className="w-full h-full object-cover object-top"
               />

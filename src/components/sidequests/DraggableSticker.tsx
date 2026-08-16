@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { SidequestItem } from '../../types';
 import { Cloud, Sparkles, FileText, Globe, Terminal, FileCode, ExternalLink } from 'lucide-react';
 import { sounds } from '../layout/SoundEffects';
+import { getAssetUrl } from '../../utils/assets';
 
 interface DraggableStickerProps {
   item: SidequestItem;
@@ -75,7 +76,7 @@ export const DraggableSticker: React.FC<DraggableStickerProps> = ({ item, onClic
         <div className="bg-transparent p-2 rounded-xl sticker-shadow relative group">
           <div className="w-full h-full flex items-center justify-center">
             <img
-              src={item.image || '/images/cookies_illustration.svg'}
+              src={getAssetUrl(item.image || '/images/cookies_illustration.svg')}
               alt={item.title}
               className="w-full h-auto object-contain pointer-events-none drop-shadow-md"
             />
