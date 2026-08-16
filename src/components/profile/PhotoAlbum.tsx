@@ -22,12 +22,12 @@ export const PhotoAlbum: React.FC = () => {
 
       {/* Main Active Photo Frame */}
       <div className="p-3 sm:p-4 flex flex-col space-y-3">
-        <div className="w-full aspect-[4/4] sm:aspect-[4/3.8] rounded-xs overflow-hidden bg-zinc-950 shadow-xs relative group">
+        <div className="w-full aspect-[4/4] sm:aspect-[4/3.8] rounded-xs overflow-hidden bg-white border border-zinc-200/60 shadow-xs flex items-center justify-center relative group p-1">
           <img
             key={activePhoto.id}
             src={activePhoto.src}
             alt={activePhoto.alt}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 animate-fade-in"
+            className="w-full h-full object-contain rounded-xs transition-transform duration-300 group-hover:scale-[1.02] animate-fade-in"
           />
         </div>
 
@@ -39,19 +39,19 @@ export const PhotoAlbum: React.FC = () => {
               <button
                 key={photo.id}
                 onClick={() => handleSelectPhoto(photo)}
-                className={`aspect-square rounded-xs overflow-hidden border-2 transition-all duration-150 cursor-pointer relative group ${
+                className={`aspect-square rounded-xs overflow-hidden border-2 bg-white flex items-center justify-center p-0.5 transition-all duration-150 cursor-pointer relative group ${
                   isSelected
                     ? 'border-blue-500 shadow-sm scale-105'
-                    : 'border-transparent opacity-60 hover:opacity-100 hover:scale-102'
+                    : 'border-zinc-200 opacity-60 hover:opacity-100 hover:scale-102'
                 }`}
               >
                 <img
                   src={photo.src}
                   alt={photo.alt}
-                  className="w-full h-full object-cover pointer-events-none"
+                  className="w-full h-full object-contain pointer-events-none rounded-2xs"
                 />
                 {isSelected && (
-                  <div className="absolute inset-0 bg-blue-500/10 pointer-events-none"></div>
+                  <div className="absolute inset-0 bg-blue-500/10 pointer-events-none rounded-xs"></div>
                 )}
               </button>
             );
